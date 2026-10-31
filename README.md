@@ -1,6 +1,6 @@
 # Nova Assinaturas — protótipo de loja
 
-Loja responsiva de demonstração para catálogo de assinaturas, quantidade por produto, carrinho e painel de pedidos/estoque. O catálogo é fictício. Checkout não cobra, não entrega assinatura, não reserva nem reduz estoque real.
+Loja responsiva para catálogo de assinaturas e painel demo. Sem credenciais do fornecedor, exibe catálogo fictício; com um adaptador configurado, pode exibir o catálogo real em modo somente leitura, com categorias, capas e valores convertidos para BRL. Nenhum checkout real, compra, cobrança, reserva ou entrega está habilitado.
 
 ## Deploy na Vercel
 
@@ -36,28 +36,32 @@ Acesse `http://127.0.0.1:8767/` (loja) e `http://127.0.0.1:8767/admin` (painel l
 ## Endpoints do deploy
 
 - `GET /` — loja.
-- `GET /api/products` — catálogo Canboso em modo somente leitura quando `CANBOSO_BUYER_KEY` estiver configurada; caso contrário, catálogo fictício.
+- `GET /api/products` — catálogo normalizado pelo adaptador ativo; atualmente Canboso em modo somente leitura quando `CANBOSO_BUYER_KEY` estiver configurada, senão catálogo fictício.
 - `POST /api/orders` — registra pedido demo no PostgreSQL; exige `DATABASE_URL`.
 - `GET /admin`, `GET /api/admin/orders`, `GET /api/admin/dashboard` — protegidos por HTTP Basic no deploy.
 - `GET /api/health` — informa configuração presente, sem revelar valores secretos.
 
 Pedidos continuam marcados como `demo_pending` e `fulfilled: false`. A persistência PostgreSQL é para manter pedidos de teste entre execuções serverless, não habilita venda real.
 
-## Catálogo Canboso (somente leitura)
+## Catálogo e apresentação independente do fornecedor
 
-Na aplicação FastAPI da Vercel, `GET /api/products` consulta `GET https://canboso.com/api/v2/telegram-buyer/products` usando `CANBOSO_BUYER_KEY` no backend. A chave nunca é enviada ao navegador nem incluída na resposta. O endpoint público da loja retorna apenas os campos do catálogo normalizados; preços mantêm a moeda informada pelo fornecedor, sem conversão para BRL.
+`CanbosoCatalogProvider` é apenas o adaptador atual. Ele converte a resposta da Canboso para um contrato comum (`id`, `name`, `description`, `price_amount`, `price_currency`, `stock`, categoria opcional, `cover_image` e `emoji`). Um próximo fornecedor precisa apenas de um adaptador que implemente `CatalogProvider.list_products()` nesse formato e seja conectado em `create_app`; a vitrine, os filtros, as capas e a conversão continuam iguais.
 
-A resposta pública inclui `availability.available` como estoque. Se a Canboso devolver `null`, a loja mostra “Estoque não informado” em vez de inventar zero. Há cache em memória de 20 segundos por instância para reduzir chamadas; a Vercel pode iniciar várias instâncias, então o cache não é global nem garante consistência entre elas. Respostas 429 passam o `Retry-After` ao cliente, sem tentativas automáticas em loop.
+A camada `enrich_catalog_for_storefront()` aplica categorias úteis quando o fornecedor não as informa e calcula `price_brl_cents` com `FrankfurterRateProvider`. A taxa diária vem de `https://api.frankfurter.dev/v2/rate/{moeda}/brl`, sem chave de API; a data da referência aparece na loja. Os centavos são arredondados para o mais próximo, com metade para cima. Os valores exibidos são apenas a conversão do preço recebido, sem margem ou taxa adicional. Se a cotação falhar ou a moeda não for suportada, o preço daquele produto fica indisponível — nunca mostramos um valor estrangeiro rotulado como R$.
 
-Quando a chave está configurada, a vitrine mostra os produtos Canboso, esconde carrinho e checkout demo e informa que o catálogo é somente leitura. Nenhuma compra, reserva, cobrança ou entrega é executada. Sem chave, a vitrine permanece no catálogo fictício. A tela administrativa de pedidos continua sendo apenas demo.
+A vitrine usa a imagem/emoji do fornecedor quando disponíveis. Sem imagem, gera uma capa gráfica por categoria; os filtros são montados a partir das categorias presentes no catálogo. A interface não depende de nomes, campos ou endpoints específicos da Canboso.
+
+No adaptador Canboso, `availability.available` é normalizado para `stock`. Se a API devolver `null`, a loja mostra “Estoque não informado” em vez de inventar zero. Há cache em memória de 20 segundos por instância para reduzir chamadas; a Vercel pode iniciar várias instâncias, então o cache não é global nem garante consistência entre elas. As taxas de câmbio também têm cache em memória por seis horas. Respostas 429 passam o `Retry-After` ao cliente, sem tentativas automáticas em loop.
+
+Quando a chave está configurada, a vitrine mostra produtos reais, oculta carrinho e checkout demo e informa que o catálogo é somente leitura. Nenhuma compra, reserva, cobrança ou entrega é executada. Sem chave, a vitrine permanece no catálogo fictício. A tela administrativa de pedidos continua sendo apenas demo.
 
 Configure a chave no painel da Vercel: **Project → Settings → Environment Variables**. Nome: `CANBOSO_BUYER_KEY`; cole o valor no campo *Value*, marque *Production* (e *Preview* se for usar previews), salve e faça *Redeploy*. Não coloque a chave no GitHub, em `.env.example`, no código do frontend nem no chat.
 
-> A documentação descreve uma Buyer API com chave emitida por um bot Telegram. A leitura real só pode ser validada depois que uma chave válida for adicionada como variável secreta e o deployment atualizado. A API de compra não é chamada por esta integração.
+> A chave buyer é usada somente no backend para consultar o catálogo. A API de compra não é chamada por esta integração; preços em BRL são referência convertida sem margem, não preço final de venda.
 
 ## Pagamento e produção
 
-Checkout real permanece desativado. Antes de vender de verdade, ainda faltam: API do fornecedor, provedor de pagamento, confirmação assíncrona/webhook, regra de reembolso, controles administrativos e política de reserva/reconciliação do estoque. A compra/entrega ao fornecedor só deve ocorrer após a confirmação definida no fluxo de pagamento. Este deploy é apenas demo.
+Checkout real permanece desativado. Antes de vender de verdade, ainda faltam: fluxo seguro de compra/entrega ao fornecedor, provedor de pagamento, confirmação assíncrona/webhook, regra de reembolso, controles administrativos e política de reserva/reconciliação do estoque. A compra/entrega ao fornecedor só deve ocorrer após a confirmação definida no fluxo de pagamento. Este deploy é apenas demo.
 
 ## Testes
 
@@ -72,7 +76,7 @@ python3 -m venv .venv
 Checagens adicionais:
 
 ```bash
-python3 -m py_compile app.py postgres_store.py store_app.py tests/*.py
+python3 -m py_compile app.py canboso_catalog.py storefront_catalog.py postgres_store.py store_app.py tests/*.py
 node --check web/store.js
 node --check web/admin.js
 ```
@@ -80,6 +84,8 @@ node --check web/admin.js
 ## Arquivos principais
 
 - `app.py` — aplicação FastAPI para Vercel, rotas públicas e autenticação do painel.
+- `storefront_catalog.py` — contrato de adaptadores, categorias, capas temáticas e conversão de moeda para BRL.
+- `canboso_catalog.py` — adaptador read-only atual da Canboso.
 - `postgres_store.py` — persistência de pedidos demo em PostgreSQL.
 - `store_app.py` — servidor local e regras comuns de catálogo/pedidos.
 - `vercel.json`, `requirements.txt`, `.python-version` — configuração de deploy.

@@ -7,8 +7,10 @@ import re
 import threading
 import time
 from urllib.error import HTTPError, URLError
-from urllib.parse import urlencode
+from urllib.parse import urljoin, urlencode, urlsplit
 from urllib.request import Request, urlopen
+
+from storefront_catalog import CatalogProviderError
 
 
 PRODUCTS_URL = "https://canboso.com/api/v2/telegram-buyer/products"
@@ -19,11 +21,9 @@ PRODUCT_TYPES = {
 }
 
 
-class CanbosoCatalogError(Exception):
+class CanbosoCatalogError(CatalogProviderError):
     def __init__(self, message: str = "Catálogo do fornecedor temporariamente indisponível.", *, status_code: int = 503, retry_after: int | None = None):
-        super().__init__(message)
-        self.status_code = status_code if status_code in {429, 503} else 503
-        self.retry_after = retry_after if retry_after and retry_after > 0 else None
+        super().__init__(message, status_code=status_code, retry_after=retry_after)
 
 
 def _number(value, field: str, *, nullable: bool = False):
@@ -32,6 +32,16 @@ def _number(value, field: str, *, nullable: bool = False):
     if isinstance(value, bool) or not isinstance(value, (int, float)) or not math.isfinite(value) or value < 0:
         raise CanbosoCatalogError(f"Resposta inválida do fornecedor ({field}).")
     return value
+
+
+def _safe_cover_image(value) -> str | None:
+    if not isinstance(value, str) or not value.strip() or len(value) > 2048:
+        return None
+    image_url = urljoin("https://canboso.com/", value.strip())
+    parsed = urlsplit(image_url)
+    if parsed.scheme != "https" or parsed.hostname != "canboso.com" or parsed.username or parsed.password:
+        return None
+    return image_url
 
 
 def _normalize_product(item: dict) -> dict:
@@ -58,17 +68,22 @@ def _normalize_product(item: dict) -> dict:
     description = item.get("description", "")
     if not isinstance(description, str):
         description = ""
+    emoji = item.get("emoji")
+    if not isinstance(emoji, str) or len(emoji) > 32:
+        emoji = None
     return {
         "id": product_id.strip(),
         "name": name.strip(),
-        "category": PRODUCT_TYPES[product_type],
-        "description": description,
         "product_type": product_type,
+        "product_type_label": PRODUCT_TYPES[product_type],
+        "description": description,
         "price_amount": _number(price.get("amount"), "preço"),
         "price_currency": currency.upper(),
         "stock": _number(availability.get("available"), "estoque", nullable=True),
         "sold": _number(availability.get("sold", 0), "vendidos"),
         "active": True,
+        "cover_image": _safe_cover_image(item.get("image")),
+        "emoji": emoji,
         "promotions": promotions,
         "purchase_requirements": requirements,
     }

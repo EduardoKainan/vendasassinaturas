@@ -42,26 +42,59 @@ class VercelAppTests(unittest.TestCase):
         self.assertFalse(health["supplier_connected"])
         self.assertFalse(health["payments_enabled"])
 
-    def test_public_products_uses_server_side_supplier_key_and_returns_read_only_catalog(self):
+    def test_public_products_uses_server_side_supplier_key_and_reusable_brl_presentation(self):
         catalog = {
             "mode": "supplier",
             "is_demo": False,
-            "source": "Canboso Buyer API",
-            "currency": "VND",
-            "products": [{"id": "prod-1", "name": "Plan", "price_amount": 50000, "price_currency": "VND", "stock": None}],
+            "source": "Example Provider",
+            "products": [{"id": "prod-1", "name": "Plan", "category": "Criação", "price_amount": 50, "price_currency": "BRL", "stock": None}],
         }
         with patch.dict("os.environ", {}, clear=True), patch("app.CanbosoCatalogProvider") as provider_class:
             provider_class.return_value.list_products.return_value = catalog
             client = TestClient(create_app(settings={"CANBOSO_BUYER_KEY": "server-only-secret"}))
             response = client.get("/api/products")
         self.assertEqual(response.status_code, 200)
-        self.assertEqual(response.json(), catalog)
+        product = response.json()["products"][0]
+        self.assertEqual(response.json()["source"], "Example Provider")
+        self.assertEqual(response.json()["display_currency"], "BRL")
+        self.assertEqual(product["category"], "Criação")
+        self.assertEqual(product["price_brl_cents"], 5000)
+        self.assertEqual(product["price_conversion_status"], "native_brl")
         self.assertEqual(response.headers["cache-control"], "no-store")
         self.assertNotIn("server-only-secret", response.text)
         provider_class.assert_called_once_with("server-only-secret")
         health = client.get("/api/health").json()
         self.assertTrue(health["supplier_catalog_configured"])
         self.assertNotIn("server-only-secret", str(health))
+
+    def test_public_products_accepts_a_different_provider_adapter_without_canboso_fields(self):
+        class FutureProvider:
+            def list_products(self):
+                return {
+                    "mode": "supplier", "is_demo": False, "source": "Future Provider",
+                    "products": [{"id": "canva-1", "name": "Canva Pro", "description": "Design plan", "price_amount": 2, "price_currency": "BRL", "stock": 3, "cover_image": "https://assets.example/canva.webp"}],
+                }
+        with patch.dict("os.environ", {}, clear=True):
+            client = TestClient(create_app(catalog_provider=FutureProvider()))
+            response = client.get("/api/products")
+        self.assertEqual(response.status_code, 200)
+        product = response.json()["products"][0]
+        self.assertEqual(response.json()["source"], "Future Provider")
+        self.assertEqual(product["category"], "Criação e design")
+        self.assertEqual(product["category_key"], "criacao-design")
+        self.assertEqual(product["price_brl_cents"], 200)
+        self.assertEqual(product["cover_image"], "https://assets.example/canva.webp")
+
+    def test_other_provider_errors_are_handled_without_supplier_specific_exceptions(self):
+        from storefront_catalog import CatalogProviderError
+        class FailingProvider:
+            def list_products(self):
+                raise CatalogProviderError("Fornecedor temporariamente indisponível.", status_code=503)
+        with patch.dict("os.environ", {}, clear=True):
+            client = TestClient(create_app(catalog_provider=FailingProvider()))
+            response = client.get("/api/products")
+        self.assertEqual(response.status_code, 503)
+        self.assertIn("Fornecedor temporariamente indisponível", response.json()["error"])
 
     def test_supplier_rate_limit_is_forwarded_without_leaking_credentials(self):
         from canboso_catalog import CanbosoCatalogError

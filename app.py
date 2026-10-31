@@ -9,8 +9,9 @@ from fastapi import Depends, FastAPI, HTTPException, Request
 from fastapi.responses import FileResponse, JSONResponse
 from fastapi.security import HTTPBasic, HTTPBasicCredentials
 
-from canboso_catalog import CanbosoCatalogError, CanbosoCatalogProvider
+from canboso_catalog import CanbosoCatalogProvider
 from postgres_store import PostgresOrderStore
+from storefront_catalog import CatalogProvider, CatalogProviderError, ExchangeRateProvider, FrankfurterRateProvider, enrich_catalog_for_storefront
 from store_app import MAX_REQUEST_BYTES, dashboard_summary, load_catalog
 
 ROOT = Path(__file__).resolve().parent
@@ -19,12 +20,13 @@ security = HTTPBasic(auto_error=False)
 MIN_ADMIN_PASSWORD_LENGTH = 16
 
 
-def create_app(order_store=None, settings: dict[str, str] | None = None) -> FastAPI:
+def create_app(order_store=None, settings: dict[str, str] | None = None, *, catalog_provider: CatalogProvider | None = None, exchange_rate_provider: ExchangeRateProvider | None = None) -> FastAPI:
     config = dict(os.environ) if settings is None else dict(settings)
     database_url = config.get("DATABASE_URL", "").strip()
     demo_checkout_enabled = config.get("DEMO_CHECKOUT_ENABLED", "").strip().lower() == "true"
     supplier_key = config.get("CANBOSO_BUYER_KEY", "").strip()
-    catalog_provider = CanbosoCatalogProvider(supplier_key) if supplier_key else None
+    active_catalog_provider = catalog_provider if catalog_provider is not None else (CanbosoCatalogProvider(supplier_key) if supplier_key else None)
+    rate_provider = exchange_rate_provider or FrankfurterRateProvider()
     store = order_store if order_store is not None else (PostgresOrderStore(database_url) if database_url else None)
     app = FastAPI(title="Nova Assinaturas", docs_url=None, redoc_url=None, openapi_url=None)
     app.state.order_store = store
@@ -37,7 +39,7 @@ def create_app(order_store=None, settings: dict[str, str] | None = None) -> Fast
             response.headers["Cache-Control"] = "no-store"
         response.headers.setdefault("X-Content-Type-Options", "nosniff")
         if path in {"/", "/admin"}:
-            response.headers["Content-Security-Policy"] = "default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data:; object-src 'none'; base-uri 'none'; frame-ancestors 'none'"
+            response.headers["Content-Security-Policy"] = "default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' https: data:; object-src 'none'; base-uri 'none'; frame-ancestors 'none'"
             response.headers["X-Frame-Options"] = "DENY"
             response.headers["Referrer-Policy"] = "no-referrer"
         return response
@@ -100,17 +102,18 @@ def create_app(order_store=None, settings: dict[str, str] | None = None) -> Fast
                 config.get("ADMIN_USER") and len(config.get("ADMIN_PASSWORD", "")) >= MIN_ADMIN_PASSWORD_LENGTH
             ),
             "supplier_connected": False,
-            "supplier_catalog_configured": catalog_provider is not None,
+            "supplier_catalog_configured": active_catalog_provider is not None,
             "payments_enabled": False,
         }
 
     @app.get("/api/products")
     def products():
-        if catalog_provider is None:
+        if active_catalog_provider is None:
             return load_catalog()
         try:
-            return catalog_provider.list_products()
-        except CanbosoCatalogError as exc:
+            raw_catalog = active_catalog_provider.list_products()
+            return enrich_catalog_for_storefront(raw_catalog, rate_provider)
+        except CatalogProviderError as exc:
             headers = {"Retry-After": str(exc.retry_after)} if exc.retry_after else None
             return JSONResponse(
                 {"error": str(exc)},

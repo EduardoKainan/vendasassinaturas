@@ -17,6 +17,8 @@ SAMPLE_RESPONSE = {
             "price": {"amount": 50000, "currency": "VND", "text": "50.000 ₫"},
             "availability": {"available": 7, "sold": 12},
             "promotions": [],
+            "image": "/uploads/chatgpt.png",
+            "emoji": "🤖",
         },
         {
             "productId": "slot_chatgpt_business",
@@ -26,6 +28,7 @@ SAMPLE_RESPONSE = {
             "availability": {"available": None, "sold": 2},
             "promotions": [],
             "purchaseRequirements": {"customerEmail": True},
+            "image": "https://elsewhere.example/unsafe.png",
         },
     ],
 }
@@ -49,6 +52,9 @@ class CanbosoCatalogTests(unittest.TestCase):
         self.assertEqual(catalog["products"][0]["price_amount"], 50000)
         self.assertEqual(catalog["products"][0]["price_currency"], "VND")
         self.assertEqual(catalog["products"][0]["stock"], 7)
+        self.assertEqual(catalog["products"][0]["cover_image"], "https://canboso.com/uploads/chatgpt.png")
+        self.assertEqual(catalog["products"][0]["emoji"], "🤖")
+        self.assertIsNone(catalog["products"][1]["cover_image"])
         self.assertIsNone(catalog["products"][1]["stock"])
         self.assertNotIn("buyer-secret", json.dumps(catalog))
 

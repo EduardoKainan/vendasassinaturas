@@ -1,5 +1,5 @@
 const money = new Intl.NumberFormat("pt-BR", { style: "currency", currency: "BRL" });
-const state = { products: [], cart: new Map(), mode: "demo", pendingKey: null };
+const state = { products: [], cart: new Map(), mode: "demo", pendingKey: null, selectedCategory: "all" };
 const $ = (selector) => document.querySelector(selector);
 
 function escapeHtml(value) {
@@ -24,12 +24,14 @@ function showNotice(message, isError = false) {
 
 function sortedProducts() {
   const query = $("#productSearch").value.trim().toLocaleLowerCase("pt-BR");
-  const products = state.products.filter((product) =>
-    `${product.name} ${product.category} ${product.description}`.toLocaleLowerCase("pt-BR").includes(query),
-  );
+  const products = state.products.filter((product) => {
+    const matchesQuery = `${product.name} ${product.category} ${product.description}`.toLocaleLowerCase("pt-BR").includes(query);
+    const matchesCategory = state.selectedCategory === "all" || product.category === state.selectedCategory;
+    return matchesQuery && matchesCategory;
+  });
   const sort = $("#sortProducts").value;
   if (sort === "price-asc") {
-    if (state.mode === "supplier") products.sort((a, b) => a.price_currency.localeCompare(b.price_currency) || a.price_amount - b.price_amount);
+    if (state.mode === "supplier") products.sort((a, b) => (a.price_brl_cents ?? Number.MAX_SAFE_INTEGER) - (b.price_brl_cents ?? Number.MAX_SAFE_INTEGER));
     else products.sort((a, b) => a.price_cents - b.price_cents);
   }
   if (sort === "duration-desc" && state.mode === "demo") products.sort((a, b) => b.duration_days - a.duration_days);
@@ -37,32 +39,76 @@ function sortedProducts() {
   return products;
 }
 
-function supplierMoney(amount, currency) {
+const coverThemes = {
+  "ia-automacao": ["ai", "✦"],
+  "criacao-design": ["design", "◈"],
+  "criacao-e-design": ["design", "◈"],
+  produtividade: ["productivity", "▤"],
+  educacao: ["education", "✎"],
+  entretenimento: ["entertainment", "▶"],
+  "seguranca": ["security", "◇"],
+  "seguranca-e-vpn": ["security", "◇"],
+  "vpn-e-seguranca": ["security", "◇"],
+  "contas-email": ["accounts", "✉"],
+  "contas-e-e-mail": ["accounts", "✉"],
+  "e-mail-e-contas": ["accounts", "✉"],
+  outros: ["other", "✧"],
+};
+
+function safeCoverUrl(value) {
+  if (typeof value !== "string" || !value.trim()) return "";
   try {
-    return new Intl.NumberFormat("pt-BR", { style: "currency", currency }).format(Number(amount));
-  } catch {
-    return `${amount} ${currency}`;
+    const url = new URL(value, location.origin);
+    if (url.username || url.password) return "";
+    if (url.protocol === "https:" || url.origin === location.origin) return url.href;
+  } catch { /* invalid image URL: use the generated cover */ }
+  return "";
+}
+
+function renderCategoryFilters() {
+  const container = $("#categoryFilters");
+  if (!container || state.mode !== "supplier") {
+    if (container) container.innerHTML = "";
+    return;
   }
+  const categories = [...new Set(state.products.map((product) => product.category).filter(Boolean))]
+    .sort((a, b) => a.localeCompare(b, "pt-BR"));
+  const filters = [{ label: "Todas", value: "all" }, ...categories.map((category) => ({ label: category, value: category }))];
+  container.innerHTML = filters.map(({ label, value }) => `<button class="category-filter ${state.selectedCategory === value ? "active" : ""}" type="button" data-category="${escapeHtml(value)}" aria-pressed="${state.selectedCategory === value}">${escapeHtml(label)}</button>`).join("");
+  container.querySelectorAll("[data-category]").forEach((button) => button.addEventListener("click", () => {
+    state.selectedCategory = button.dataset.category;
+    renderCategoryFilters();
+    renderProducts();
+  }));
 }
 
 function productCard(product, index) {
   const stock = product.stock === null || product.stock === undefined ? null : Math.max(0, Number(product.stock) || 0);
+  const cover = coverThemes[product.category_key] || coverThemes.outros;
   const artClass = ["art-standard", "art-plus", "art-family", "art-pro"][index % 4];
   const stockClass = stock === 0 ? "stock-empty" : stock !== null && stock <= 5 ? "stock-low" : "";
   const stockText = state.mode === "supplier"
     ? stock === null ? "Estoque não informado" : stock === 0 ? "Indisponível" : `${stock} disponíveis`
     : stock === 0 ? "Indisponível" : `${stock} un. demo`;
-  const price = state.mode === "supplier" ? supplierMoney(product.price_amount, product.price_currency) : formatMoney(product.price_cents);
-  const badge = state.mode === "supplier" ? (product.badge || product.category || "Produto Canboso") : (product.badge || "Plano demo");
-  const duration = state.mode === "supplier" ? product.category : `${Number(product.duration_days) || 0} dias`;
+  const price = state.mode === "supplier"
+    ? product.price_brl_cents === null || product.price_brl_cents === undefined ? "Conversão indisponível" : formatMoney(product.price_brl_cents)
+    : formatMoney(product.price_cents);
+  const priceNote = state.mode === "supplier"
+    ? product.price_conversion_status === "converted" ? " · convertido para R$" : product.price_conversion_status === "native_brl" ? " · preço em R$" : " · câmbio indisponível"
+    : "/ unidade demo";
+  const badge = state.mode === "supplier" ? (product.badge || product.product_type_label || product.category || "Produto") : (product.badge || "Plano demo");
+  const duration = state.mode === "supplier" ? (product.product_type_label || "") : `${Number(product.duration_days) || 0} dias`;
+  const coverUrl = state.mode === "supplier" ? safeCoverUrl(product.cover_image) : "";
+  const image = coverUrl ? `<img class="product-cover-image" src="${escapeHtml(coverUrl)}" alt="" loading="lazy" referrerpolicy="no-referrer" data-cover-image>` : "";
+  const coverMarkup = state.mode === "supplier" ? `<span class="cover-symbol" aria-hidden="true">${escapeHtml(product.emoji || cover[1])}</span>` : "";
   const actions = state.mode === "supplier" ? "" : `<div class="product-actions"><input class="quantity-input" type="number" min="1" max="${stock}" value="1" ${stock === 0 ? "disabled" : ""} aria-label="Quantidade de ${escapeHtml(product.name)}"><button class="add-button" type="button" data-add="${escapeHtml(product.id)}" ${stock === 0 ? "disabled" : ""}>${stock === 0 ? "Sem estoque" : "Adicionar +"}</button></div>`;
   return `<article class="product-card">
-    <div class="product-art ${artClass}"><span class="product-badge">${escapeHtml(badge)}</span><span class="product-glyph" aria-hidden="true">${escapeHtml(String(product.name).slice(0, 1).toUpperCase())}</span></div>
+    <div class="product-art ${artClass} cover-${cover[0]}">${image}<span class="product-badge">${escapeHtml(badge)}</span>${coverMarkup}<span class="product-glyph" aria-hidden="true">${escapeHtml(String(product.name).slice(0, 1).toUpperCase())}</span></div>
     <div class="product-content">
       <div class="product-meta"><span>${escapeHtml(product.category || "Assinatura")}</span><span>${escapeHtml(duration)}</span></div>
       <h3>${escapeHtml(product.name)}</h3>
       <p class="product-description">${escapeHtml(product.description || "")}</p>
-      <div class="product-price-row"><strong class="product-price">${escapeHtml(price)}<small>${state.mode === "supplier" ? "preço da API" : "/ unidade demo"}</small></strong><span class="stock-tag ${stockClass}">${escapeHtml(stockText)}</span></div>
+      <div class="product-price-row"><strong class="product-price">${escapeHtml(price)}<small>${escapeHtml(priceNote)}</small></strong><span class="stock-tag ${stockClass}">${escapeHtml(stockText)}</span></div>
       ${actions}
     </div>
   </article>`;
@@ -74,6 +120,7 @@ function renderProducts() {
   grid.innerHTML = products.length
     ? products.map(productCard).join("")
     : '<div class="no-results">Nenhum plano encontrado. Tente outro termo.</div>';
+  grid.querySelectorAll("[data-cover-image]").forEach((image) => image.addEventListener("error", () => image.remove(), { once: true }));
   grid.querySelectorAll("[data-add]").forEach((button) => {
     button.addEventListener("click", () => {
       const card = button.closest(".product-card");
@@ -159,26 +206,33 @@ async function loadCatalog() {
     if (!validDemo && !validSupplier) throw new Error("Formato de catálogo inválido.");
     state.mode = catalog.mode;
     state.products = catalog.products.filter((product) => product.active !== false);
+    state.selectedCategory = "all";
     $("#heroProductCount").textContent = String(state.products.length);
     const knownStocks = state.products.map((product) => product.stock).filter((stock) => Number.isFinite(Number(stock)) && stock !== null && stock !== undefined);
     $("#heroStockCount").textContent = knownStocks.length === state.products.length
       ? String(knownStocks.reduce((sum, stock) => sum + Number(stock), 0))
       : "—";
+    renderCategoryFilters();
     renderProducts();
     if (validSupplier) {
-      $("#ribbonLabel").textContent = "CATÁLOGO CANBOSO · SOMENTE LEITURA";
-      $("#ribbonText").textContent = "Produtos e disponibilidade vêm da API. Pagamento e compras estão desativados.";
-      $("#heroCatalogLabel").textContent = "API CANBOSO";
+      const sourceName = catalog.source || "fornecedor";
+      const rates = Array.isArray(catalog.fx_rates) ? catalog.fx_rates : [];
+      const rateLabel = rates.length ? ` · câmbio Frankfurter: ${rates.map((rate) => `${rate.base}/BRL ${new Intl.NumberFormat("pt-BR", { maximumSignificantDigits: 8 }).format(Number(rate.rate))} (${rate.date})`).join(", ")}` : "";
+      const unavailable = state.products.filter((product) => product.price_brl_cents === null || product.price_brl_cents === undefined).length;
+      const unavailableLabel = unavailable ? ` · conversão indisponível em ${unavailable} produto(s)` : "";
+      $("#ribbonLabel").textContent = "CATÁLOGO DO FORNECEDOR · SOMENTE LEITURA";
+      $("#ribbonText").textContent = "Produtos e disponibilidade vêm da API. Preços em reais por conversão diária, sem margem; compras e pagamentos desativados.";
+      $("#heroCatalogLabel").textContent = "CATÁLOGO AO VIVO";
       $("#heroStockLabel").textContent = "UNIDADES INFORMADAS";
-      $("#heroDescription").textContent = "Produtos, preços e disponibilidade consultados diretamente na API Canboso. Pagamento ainda desativado.";
-      $("#heroCard").setAttribute("aria-label", "Resumo do catálogo Canboso");
+      $("#heroDescription").textContent = `Produtos e disponibilidade consultados de ${sourceName}. Valores exibidos em reais; pagamento e compras continuam desativados.`;
+      $("#heroCard").setAttribute("aria-label", `Resumo do catálogo de ${sourceName}`);
       $("#heroCardSubtext").textContent = "consulte a disponibilidade";
       $("#trustMessage").textContent = "Consulta somente de produtos e disponibilidade. Nenhuma compra, cobrança ou reserva de estoque é feita.";
-      document.title = "Nova Assinaturas — Catálogo Canboso";
+      document.title = `Nova Assinaturas — ${sourceName}`;
       $("#carrinho").hidden = true;
       $("#headerCartLink").hidden = true;
       $("#sortProducts option[value=\"duration-desc\"]").hidden = true;
-      status.textContent = `${state.products.length} produtos recebidos da Canboso · consulta somente · sem pagamento`;
+      status.textContent = `${state.products.length} produtos de ${sourceName} · valores em R$${rateLabel} · sem margem aplicada${unavailableLabel} · consulta somente`;
     } else {
       $("#ribbonLabel").textContent = "AMBIENTE DE DEMONSTRAÇÃO";
       $("#ribbonText").textContent = "Produtos, preços e estoque são fictícios. Nenhuma cobrança ou entrega é feita.";
