@@ -1,0 +1,56 @@
+{
+  "mode": "demo",
+  "is_demo": true,
+  "source": "catalogo_ficticio_local",
+  "currency": "BRL",
+  "products": [
+    {
+      "id": "essencial-30",
+      "name": "Essencial · 30 dias",
+      "category": "Individual",
+      "duration_days": 30,
+      "description": "Plano de demonstração para validar a vitrine e o fluxo de quantidades.",
+      "price_cents": 2990,
+      "stock": 36,
+      "active": true,
+      "featured": false,
+      "badge": "30 dias"
+    },
+    {
+      "id": "plus-90",
+      "name": "Plus · 90 dias",
+      "category": "Individual",
+      "duration_days": 90,
+      "description": "Exemplo fictício de assinatura trimestral; preço e estoque não são reais.",
+      "price_cents": 7490,
+      "stock": 18,
+      "active": true,
+      "featured": true,
+      "badge": "Mais popular"
+    },
+    {
+      "id": "familia-180",
+      "name": "Família · 180 dias",
+      "category": "Família",
+      "duration_days": 180,
+      "description": "Produto de amostra para demonstrar unidades disponíveis e subtotal.",
+      "price_cents": 12990,
+      "stock": 7,
+      "active": true,
+      "featured": false,
+      "badge": "Semestral"
+    },
+    {
+      "id": "pro-365",
+      "name": "Pro · 365 dias",
+      "category": "Individual",
+      "duration_days": 365,
+      "description": "Plano anual fictício. Será substituído pelo item retornado pela API real.",
+      "price_cents": 21990,
+      "stock": 0,
+      "active": true,
+      "featured": false,
+      "badge": "Anual"
+    }
+  ]
+}

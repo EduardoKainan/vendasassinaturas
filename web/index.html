@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#10131d">
+  <meta name="description" content="Demonstração de loja de assinaturas digitais.">
+  <title>Nova Assinaturas — Loja demo</title>
+  <link rel="stylesheet" href="/app.css">
+  <script src="/store.js" defer></script>
+</head>
+<body>
+  <div class="demo-ribbon"><span class="demo-dot"></span> AMBIENTE DE DEMONSTRAÇÃO <span>Produtos, preços e estoque são fictícios. Nenhuma cobrança ou entrega é feita.</span></div>
+  <header class="site-header wrap">
+    <a class="brand" href="/" aria-label="Nova Assinaturas, início"><span class="brand-mark">N</span><span>NOVA<span class="brand-light">ASSINATURAS</span></span></a>
+    <nav class="main-nav" aria-label="Navegação principal">
+      <a class="nav-active" href="#catalogo">Loja</a>
+      <a href="/admin">Painel de pedidos</a>
+    </nav>
+    <a class="header-cart" href="#carrinho"><span class="cart-icon">▣</span><span>Carrinho</span><span class="cart-count" id="headerCartCount">0</span></a>
+  </header>
+
+  <main class="wrap store-main">
+    <section class="hero">
+      <div class="hero-copy">
+        <div class="eyebrow"><span class="eyebrow-line"></span> ACESSO DIGITAL, SEM COMPLICAÇÃO</div>
+        <h1>Escolha seu próximo <span>plano.</span></h1>
+        <p>Compare duração, disponibilidade e preço. Este catálogo está em modo de demonstração enquanto a API do fornecedor e o pagamento não são configurados.</p>
+        <a class="button button-primary hero-cta" href="#catalogo">Explorar planos <span aria-hidden="true">↓</span></a>
+      </div>
+      <div class="hero-card" aria-label="Resumo do catálogo demo">
+        <div class="hero-orbit orbit-one"></div><div class="hero-orbit orbit-two"></div>
+        <div class="hero-card-top"><span class="live-label"><i></i> CATÁLOGO DEMO</span><span class="hero-spark">✦</span></div>
+        <div class="hero-card-title">Planos digitais<br><strong>para testar o fluxo</strong></div>
+        <div class="hero-card-bottom"><span><b id="heroProductCount">—</b><small>PLANOS</small></span><span class="hero-divider"></span><span><b id="heroStockCount">—</b><small>UNIDADES DEMO</small></span></div>
+      </div>
+    </section>
+
+    <div class="trust-strip" role="note"><span class="trust-icon">i</span><span><strong>Prévia funcional:</strong> você pode montar o carrinho e registrar pedidos de demonstração. Não informe dados de pagamento ou dados pessoais.</span><a href="/admin">Ver painel <span aria-hidden="true">↗</span></a></div>
+
+    <section class="catalog-section" id="catalogo">
+      <div class="section-heading">
+        <div><div class="eyebrow"><span class="eyebrow-line"></span> CATÁLOGO</div><h2>Planos disponíveis</h2><p id="catalogStatus" class="muted">Carregando catálogo demo…</p></div>
+        <div class="catalog-controls"><label class="search-box"><span aria-hidden="true">⌕</span><input id="productSearch" type="search" placeholder="Buscar plano" aria-label="Buscar plano"></label><label class="sort-box"><span class="sr-only">Ordenar produtos</span><select id="sortProducts"><option value="featured">Em destaque</option><option value="price-asc">Menor preço</option><option value="duration-desc">Maior duração</option></select></label></div>
+      </div>
+      <div class="shop-layout">
+        <div class="product-grid" id="productGrid" aria-live="polite"></div>
+        <aside class="cart-panel" id="carrinho" aria-label="Seu pedido de demonstração">
+          <div class="cart-panel-head"><div><span class="eyebrow">SEU PEDIDO</span><h3>Carrinho</h3></div><span class="cart-count cart-count-large" id="cartCount">0</span></div>
+          <div class="cart-items" id="cartItems"><div class="empty-cart"><span class="empty-cart-icon">＋</span><strong>Seu carrinho está vazio</strong><p>Adicione um plano para ver o resumo.</p></div></div>
+          <div class="cart-total"><span>Total de demonstração</span><strong id="cartTotal">R$ 0,00</strong></div>
+          <button class="button button-primary checkout-button" id="createOrder" type="button" disabled>Registrar pedido demo <span aria-hidden="true">→</span></button>
+          <p class="cart-legal">Sem pagamento, reserva de estoque ou entrega. Pedido apenas para testar o painel.</p>
+          <div class="secure-note"><span>◇</span><span>Checkout desativado até definir pagamento e integração do fornecedor.</span></div>
+          <p id="storeNotice" class="notice" role="status" aria-live="polite"></p>
+        </aside>
+      </div>
+    </section>
+    <footer class="site-footer"><span>© <span id="year"></span> Nova Assinaturas · protótipo local</span><a href="/admin">Acessar painel interno ↗</a></footer>
+  </main>
+</body>
+</html>

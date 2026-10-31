@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#10131d">
+  <meta name="description" content="Painel local de demonstração para catálogo e pedidos de assinaturas.">
+  <title>Painel de pedidos — Nova Assinaturas</title>
+  <link rel="stylesheet" href="/app.css">
+  <script src="/admin.js" defer></script>
+</head>
+<body class="admin-body">
+  <div class="demo-ribbon"><span class="demo-dot"></span> PAINEL LOCAL DEMO <span>Não publique esta versão: o painel ainda não tem autenticação nem integração real.</span></div>
+  <header class="site-header wrap">
+    <a class="brand" href="/" aria-label="Nova Assinaturas, loja"><span class="brand-mark">N</span><span>NOVA<span class="brand-light">ASSINATURAS</span></span></a>
+    <nav class="main-nav" aria-label="Navegação principal"><a href="/">Loja</a><a class="nav-active" href="/admin">Pedidos</a></nav>
+    <button class="button button-quiet refresh-button" id="refreshDashboard" type="button">↻ <span>Atualizar</span></button>
+  </header>
+  <main class="wrap admin-main">
+    <section class="admin-heading"><div><div class="eyebrow"><span class="eyebrow-line"></span> ÁREA DE OPERAÇÃO</div><h1>Painel de vendas</h1><p>Acompanhe pedidos de teste, catálogo e disponibilidade em um só lugar.</p></div><span class="mode-badge"><i></i> SOMENTE DEMO</span></section>
+    <div class="integration-alert"><span class="alert-symbol">!</span><div><strong>Fornecedor não conectado</strong><p>Os dados abaixo vêm de um catálogo fictício local. A API real será ligada quando você enviar a documentação do fornecedor. Pagamentos estão desativados.</p></div><span class="integration-state">AGUARDANDO API</span></div>
+    <div class="error-banner hidden" id="adminError" role="alert"></div>
+    <section class="metric-grid" id="metrics" aria-label="Resumo do painel">
+      <article class="metric-card"><span>Produtos no catálogo</span><strong id="metricProducts">—</strong><small>dados demo</small><span class="metric-icon purple">▦</span></article>
+      <article class="metric-card"><span>Unidades disponíveis</span><strong id="metricStock">—</strong><small>estoque fictício</small><span class="metric-icon cyan">◫</span></article>
+      <article class="metric-card"><span>Pedidos de teste</span><strong id="metricOrders">—</strong><small>sem cobranças reais</small><span class="metric-icon gold">↗</span></article>
+      <article class="metric-card"><span>Aguardando pagamento</span><strong id="metricPending">—</strong><small>status demonstrativo</small><span class="metric-icon pink">◷</span></article>
+    </section>
+    <section class="admin-section">
+      <div class="section-heading admin-section-heading"><div><div class="eyebrow"><span class="eyebrow-line"></span> INVENTÁRIO</div><h2>Produtos e quantidades</h2><p class="muted">O estoque não é reservado nem reduzido nos pedidos demo.</p></div><span class="table-count" id="productCountLabel">— produtos</span></div>
+      <div class="table-shell"><table><thead><tr><th>Produto</th><th>Categoria</th><th>Duração</th><th>Preço demo</th><th>Disponíveis</th><th>Status</th></tr></thead><tbody id="productsTableBody"><tr><td colspan="6" class="table-loading">Carregando catálogo demo…</td></tr></tbody></table></div>
+    </section>
+    <section class="admin-section orders-section">
+      <div class="section-heading admin-section-heading"><div><div class="eyebrow"><span class="eyebrow-line"></span> ATIVIDADE</div><h2>Pedidos recentes</h2><p class="muted">Pedidos feitos na loja de demonstração aparecem aqui.</p></div><span class="table-count" id="ordersCountLabel">— pedidos</span></div>
+      <div class="orders-list" id="ordersList"><div class="table-loading">Carregando pedidos…</div></div>
+    </section>
+    <footer class="site-footer"><span>Nova Assinaturas · protótipo local e não autenticado</span><a href="/">Voltar à loja ↗</a></footer>
+  </main>
+</body>
+</html>
