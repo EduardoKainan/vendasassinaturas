@@ -214,6 +214,8 @@ def make_handler(db_path: Path | str = DB_PATH, provider: CatalogProvider | None
                 assets = {
                     "/app.css": ("app.css", "text/css; charset=utf-8"),
                     "/store.js": ("store.js", "text/javascript; charset=utf-8"),
+                    "/product-locale.js": ("product-locale.js", "text/javascript; charset=utf-8"),
+                    "/product-translations.pt-BR.json": ("product-translations.pt-BR.json", "application/json; charset=utf-8"),
                     "/admin.js": ("admin.js", "text/javascript; charset=utf-8"),
                 }
                 if path in assets:

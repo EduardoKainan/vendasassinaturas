@@ -29,10 +29,13 @@ class StoreHttpFlowTests(unittest.TestCase):
         with urlopen(f"{self.base}/", timeout=3) as response:
             self.assertEqual(response.status, 200)
             self.assertIn("text/html", response.headers["Content-Type"])
-        for asset, expected_type in (("app.css", "text/css"), ("store.js", "javascript"), ("admin.js", "javascript")):
+        for asset, expected_type in (("app.css", "text/css"), ("product-locale.js", "javascript"), ("store.js", "javascript"), ("admin.js", "javascript"), ("product-translations.pt-BR.json", "application/json")):
             with urlopen(f"{self.base}/{asset}", timeout=3) as response:
                 self.assertEqual(response.status, 200)
                 self.assertIn(expected_type, response.headers["Content-Type"])
+        with urlopen(f"{self.base}/", timeout=3) as response:
+            html = response.read().decode()
+        self.assertLess(html.index("product-locale.js"), html.index("store.js"))
 
     def test_catalog_to_demo_order_appears_in_admin_panel(self):
         with urlopen(f"{self.base}/api/products", timeout=3) as response:

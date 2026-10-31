@@ -36,6 +36,8 @@ class VercelAppTests(unittest.TestCase):
         self.assertEqual(page.status_code, 200)
         self.assertIn("default-src 'self'", page.headers["content-security-policy"])
         self.assertEqual(client.get("/app.css").status_code, 200)
+        self.assertEqual(client.get("/product-locale.js").status_code, 200)
+        self.assertEqual(client.get("/product-translations.pt-BR.json").status_code, 200)
         health = client.get("/api/health").json()
         self.assertFalse(health["database_configured"])
         self.assertFalse(health["demo_checkout_enabled"])

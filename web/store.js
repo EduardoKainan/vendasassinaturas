@@ -16,6 +16,14 @@ function formatMoney(cents) {
   return money.format((Number(cents) || 0) / 100);
 }
 
+function displayName(product) {
+  return state.mode === "supplier" ? product.display_name : product.name;
+}
+
+function displayDescription(product) {
+  return state.mode === "supplier" ? product.display_description : product.description;
+}
+
 function showNotice(message, isError = false) {
   const node = $("#storeNotice");
   node.textContent = message;
@@ -25,7 +33,7 @@ function showNotice(message, isError = false) {
 function sortedProducts() {
   const query = $("#productSearch").value.trim().toLocaleLowerCase("pt-BR");
   const products = state.products.filter((product) => {
-    const matchesQuery = `${product.name} ${product.category} ${product.description}`.toLocaleLowerCase("pt-BR").includes(query);
+    const matchesQuery = `${displayName(product)} ${product.category} ${displayDescription(product)}`.toLocaleLowerCase("pt-BR").includes(query);
     const matchesCategory = state.selectedCategory === "all" || product.category === state.selectedCategory;
     return matchesQuery && matchesCategory;
   });
@@ -83,6 +91,8 @@ function renderCategoryFilters() {
 }
 
 function productCard(product, index) {
+  const productName = displayName(product);
+  const productDescription = displayDescription(product);
   const stock = product.stock === null || product.stock === undefined ? null : Math.max(0, Number(product.stock) || 0);
   const cover = coverThemes[product.category_key] || coverThemes.outros;
   const artClass = ["art-standard", "art-plus", "art-family", "art-pro"][index % 4];
@@ -96,18 +106,18 @@ function productCard(product, index) {
   const priceNote = state.mode === "supplier"
     ? product.price_conversion_status === "converted" ? " · convertido para R$" : product.price_conversion_status === "native_brl" ? " · preço em R$" : " · câmbio indisponível"
     : "/ unidade demo";
-  const badge = state.mode === "supplier" ? (product.badge || product.product_type_label || product.category || "Produto") : (product.badge || "Plano demo");
+  const badge = state.mode === "supplier" ? (product.display_badge || product.badge || product.product_type_label || product.category || "Produto") : (product.badge || "Plano demo");
   const duration = state.mode === "supplier" ? (product.product_type_label || "") : `${Number(product.duration_days) || 0} dias`;
   const coverUrl = state.mode === "supplier" ? safeCoverUrl(product.cover_image) : "";
   const image = coverUrl ? `<img class="product-cover-image" src="${escapeHtml(coverUrl)}" alt="" loading="lazy" referrerpolicy="no-referrer" data-cover-image>` : "";
   const coverMarkup = state.mode === "supplier" ? `<span class="cover-symbol" aria-hidden="true">${escapeHtml(product.emoji || cover[1])}</span>` : "";
   const actions = state.mode === "supplier" ? "" : `<div class="product-actions"><input class="quantity-input" type="number" min="1" max="${stock}" value="1" ${stock === 0 ? "disabled" : ""} aria-label="Quantidade de ${escapeHtml(product.name)}"><button class="add-button" type="button" data-add="${escapeHtml(product.id)}" ${stock === 0 ? "disabled" : ""}>${stock === 0 ? "Sem estoque" : "Adicionar +"}</button></div>`;
   return `<article class="product-card">
-    <div class="product-art ${artClass} cover-${cover[0]}">${image}<span class="product-badge">${escapeHtml(badge)}</span>${coverMarkup}<span class="product-glyph" aria-hidden="true">${escapeHtml(String(product.name).slice(0, 1).toUpperCase())}</span></div>
+    <div class="product-art ${artClass} cover-${cover[0]}">${image}<span class="product-badge">${escapeHtml(badge)}</span>${coverMarkup}<span class="product-glyph" aria-hidden="true">${escapeHtml(String(productName).slice(0, 1).toUpperCase())}</span></div>
     <div class="product-content">
       <div class="product-meta"><span>${escapeHtml(product.category || "Assinatura")}</span><span>${escapeHtml(duration)}</span></div>
-      <h3>${escapeHtml(product.name)}</h3>
-      <p class="product-description">${escapeHtml(product.description || "")}</p>
+      <h3>${escapeHtml(productName)}</h3>
+      <p class="product-description">${escapeHtml(productDescription || "")}</p>
       <div class="product-price-row"><strong class="product-price">${escapeHtml(price)}<small>${escapeHtml(priceNote)}</small></strong><span class="stock-tag ${stockClass}">${escapeHtml(stockText)}</span></div>
       ${actions}
     </div>
@@ -204,8 +214,18 @@ async function loadCatalog() {
     const validDemo = catalog.mode === "demo" && catalog.is_demo === true;
     const validSupplier = catalog.mode === "supplier" && catalog.is_demo === false && Array.isArray(catalog.products);
     if (!validDemo && !validSupplier) throw new Error("Formato de catálogo inválido.");
+    let displayProducts = catalog.products;
+    let localeStats = { hidden_count: 0, untranslated_count: 0 };
+    if (validSupplier) {
+      const localeResponse = await fetch("/product-translations.pt-BR.json", { cache: "no-store" });
+      if (!localeResponse.ok) throw new Error("As traduções em português não estão disponíveis agora.");
+      const localeData = await localeResponse.json();
+      const localized = window.NovaProductLocale.applyProductLocale(catalog.products, localeData);
+      displayProducts = localized.products;
+      localeStats = localized;
+    }
     state.mode = catalog.mode;
-    state.products = catalog.products.filter((product) => product.active !== false);
+    state.products = displayProducts.filter((product) => product.active !== false);
     state.selectedCategory = "all";
     $("#heroProductCount").textContent = String(state.products.length);
     const knownStocks = state.products.map((product) => product.stock).filter((stock) => Number.isFinite(Number(stock)) && stock !== null && stock !== undefined);
@@ -220,6 +240,13 @@ async function loadCatalog() {
       const rateLabel = rates.length ? ` · câmbio Frankfurter: ${rates.map((rate) => `${rate.base}/BRL ${new Intl.NumberFormat("pt-BR", { maximumSignificantDigits: 8 }).format(Number(rate.rate))} (${rate.date})`).join(", ")}` : "";
       const unavailable = state.products.filter((product) => product.price_brl_cents === null || product.price_brl_cents === undefined).length;
       const unavailableLabel = unavailable ? ` · conversão indisponível em ${unavailable} produto(s)` : "";
+      const notLocalized = localeStats.hidden_count + localeStats.untranslated_count;
+      const notLocalizedLabel = notLocalized ? ` · ${notLocalized} item(ns) não exibido(s) na versão em português` : "";
+      const translatedCount = Math.max(0, state.products.length - localeStats.unchanged_count);
+      const localizationLabel = ` · ${translatedCount} produto${translatedCount === 1 ? "" : "s"} traduzido${translatedCount === 1 ? "" : "s"} para pt-BR`;
+      const unchangedLabel = localeStats.unchanged_count
+        ? ` · ${localeStats.unchanged_count} produto${localeStats.unchanged_count === 1 ? "" : "s"} mantido${localeStats.unchanged_count === 1 ? "" : "s"} no texto original`
+        : "";
       $("#ribbonLabel").textContent = "CATÁLOGO DO FORNECEDOR · SOMENTE LEITURA";
       $("#ribbonText").textContent = "Produtos e disponibilidade vêm da API. Preços em reais por conversão diária, sem margem; compras e pagamentos desativados.";
       $("#heroCatalogLabel").textContent = "CATÁLOGO AO VIVO";
@@ -232,7 +259,7 @@ async function loadCatalog() {
       $("#carrinho").hidden = true;
       $("#headerCartLink").hidden = true;
       $("#sortProducts option[value=\"duration-desc\"]").hidden = true;
-      status.textContent = `${state.products.length} produtos de ${sourceName} · valores em R$${rateLabel} · sem margem aplicada${unavailableLabel} · consulta somente`;
+      status.textContent = `${state.products.length} produtos de ${sourceName}${localizationLabel}${unchangedLabel} · valores em R$${rateLabel} · sem margem aplicada${unavailableLabel}${notLocalizedLabel} · consulta somente`;
     } else {
       $("#ribbonLabel").textContent = "AMBIENTE DE DEMONSTRAÇÃO";
       $("#ribbonText").textContent = "Produtos, preços e estoque são fictícios. Nenhuma cobrança ou entrega é feita.";

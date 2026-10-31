@@ -81,6 +81,8 @@ def create_app(order_store=None, settings: dict[str, str] | None = None, *, cata
         allowed = {
             "app.css": "text/css",
             "store.js": "text/javascript",
+            "product-locale.js": "text/javascript",
+            "product-translations.pt-BR.json": "application/json",
             "admin.js": "text/javascript",
         }
         if asset_name not in allowed:

@@ -59,6 +59,10 @@ Configure a chave no painel da Vercel: **Project → Settings → Environment Va
 
 > A chave buyer é usada somente no backend para consultar o catálogo. A API de compra não é chamada por esta integração; preços em BRL são referência convertida sem margem, não preço final de venda.
 
+## Localização da vitrine
+
+Os textos em português do Brasil ficam em `web/product-translations.pt-BR.json` e são aplicados somente na apresentação do catálogo. O nome e a descrição recebidos do fornecedor não são sobrescritos na API. Produtos sem tradução revisada não aparecem em inglês por engano. Por escolha do operador, anúncios sinalizados com dados ou instruções de acesso permanecem visíveis com o texto original do fornecedor, sem tradução. Ao adicionar outro fornecedor, inclua as traduções de exibição para os produtos que ele retornar; a estrutura da vitrine continua independente dos campos específicos do fornecedor.
+
 ## Pagamento e produção
 
 Checkout real permanece desativado. Antes de vender de verdade, ainda faltam: fluxo seguro de compra/entrega ao fornecedor, provedor de pagamento, confirmação assíncrona/webhook, regra de reembolso, controles administrativos e política de reserva/reconciliação do estoque. A compra/entrega ao fornecedor só deve ocorrer após a confirmação definida no fluxo de pagamento. Este deploy é apenas demo.

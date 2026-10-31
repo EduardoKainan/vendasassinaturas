@@ -1,0 +1,796 @@
+{
+  "locale": "pt-BR",
+  "source_product_ids": [
+    "6a5cc41237d1d25ab6b419af",
+    "6ac2765b58fd0139bbe58c07",
+    "6a42a6857a292502082c572f",
+    "6a40da60a530bb6d36111f5a",
+    "6ae61201ca782692262ef827",
+    "6ae2682aaf04316c422373e5",
+    "6ad65a621d313c71fe80820d",
+    "6ad65a851d313c71fe808a94",
+    "6ad65aa71d313c71fe80912f",
+    "6ac71f09247ad165e5fc593c",
+    "6ae3371e733eece885451242",
+    "6a4f9e24a8d17b681650ce19",
+    "6acfb04a45252652925dc269",
+    "6acfb08d45252652925dd0c7",
+    "6acfb0bd45252652925dda23",
+    "6acfb11345252652925dec30",
+    "6acfb16445252652925dfb28",
+    "6acfb19c45252652925e08d3",
+    "6acfb1e945252652925e1eb7",
+    "6ae38ee2ed8e0e40e4e20f6a",
+    "6acbdfc6fac0129822a68684",
+    "6acbe02ffac0129822a692a2",
+    "6acbe006fac0129822a68ea4",
+    "6acc6aca9112e477c9ad86eb",
+    "6acbe092fac0129822a6a037",
+    "6acbe0adfac0129822a6a3bf",
+    "6ac3ea8b8931359f49e15ed2",
+    "6abfdf23f922f3c31f968cff",
+    "6a9e51544f6e4dbc77f3f15c",
+    "6ac3eac58931359f49e16a3a",
+    "6aabef625271203cb1109c96",
+    "6ab90c58266735c89777cc46",
+    "6a9e51b84f6e4dbc77f3ffa9",
+    "6a2f91c988c422ef229e7865",
+    "6ab348b25bf626c6e95e7105",
+    "6acf9cf2452526529258af25",
+    "6acc7594a4bec4e0eb2de497",
+    "6aa276776bbf581350b9a2f1",
+    "6ac28e5458fd0139bbea8931",
+    "6ac28e6858fd0139bbea8c18",
+    "6ac28edb58fd0139bbea9829",
+    "6ac28f0158fd0139bbea9c4f",
+    "6acfb38245252652925e6c87",
+    "6acbe5b8fac0129822a737cd",
+    "6acbe5d0fac0129822a73a7d",
+    "6acbe70afac0129822a760f8",
+    "6acf1f22672d61b9bd71d77c",
+    "6acf1fd4672d61b9bd71fb2f",
+    "6acbe8bcfac0129822a794bd",
+    "6acbe8fafac0129822a79e44",
+    "6ad192cd02296012a32a5c67",
+    "6a47257cc35868edfeb4b3a3",
+    "6ace53119be1aad20b05f20b",
+    "6accf60c73ae2c508579fe66",
+    "6ab386770944def028abe0f5",
+    "6ab386790944def028abe14d",
+    "6ab3867d0944def028abe1a2",
+    "6ab3866f0944def028abe00e",
+    "6ab386750944def028abe088",
+    "6ad71475d77978d3b598c39a",
+    "6ad7149bd77978d3b598d417",
+    "6a79f0038bd496b9f54f9178",
+    "6a755120552f7596443e8b1a",
+    "6a9e56194f6e4dbc77f49556",
+    "6a9e55f54f6e4dbc77f490af",
+    "6a9e563e4f6e4dbc77f49a6e",
+    "6a9e56064f6e4dbc77f49363",
+    "6a9e56494f6e4dbc77f49b8b",
+    "6a9e56294f6e4dbc77f497dc",
+    "6ab16b6df6d40479fde44d34",
+    "6aac46695271203cb11cfe0c",
+    "6ad2740a5f42a3a253f1377b",
+    "6a8ddb7ba806552096576c88",
+    "6ad86eb80c1a1b0e6643f10a",
+    "6aac4b3b5271203cb11d8acd",
+    "6aac4b645271203cb11d8df6",
+    "6ac3e5948931359f49e0b788",
+    "6ac3e5f48931359f49e0c49a",
+    "6ac3e6128931359f49e0c806",
+    "6a8c43743e33293b219e7b43",
+    "6aac4b525271203cb11d8c65",
+    "6aba68dc31a482e3ae2917de",
+    "6acfc1dd1062939df5132ce8",
+    "6acfc1f11062939df5133120",
+    "6ad26c635f42a3a253f0224a",
+    "6abf726ff922f3c31f837251",
+    "6ad7dfc5cf74fcbdf587e05c",
+    "6aac4ac75271203cb11d7ee4",
+    "6a9e58684f6e4dbc77f4e383",
+    "6a9e584a4f6e4dbc77f4defb",
+    "6ab94f01266735c897823a00",
+    "6acb61eafac01298228cf433",
+    "6acb61f5fac01298228cf66b",
+    "6aac4b895271203cb11d924b",
+    "6aa7acd30e9c83494e683862",
+    "6aa7acea0e9c83494e683c48",
+    "6ab4d12a71af64b485efed87",
+    "6ab4d13d71af64b485eff181",
+    "6ab4d14e71af64b485eff67b",
+    "6ab299532d45b71acbee6cc3",
+    "6ade353f9e69455ae526e689",
+    "6ab4d09571af64b485efd56b",
+    "6abf7120f922f3c31f833334",
+    "6abf7155f922f3c31f833df4",
+    "6abf71bdf922f3c31f835362",
+    "6ac8d252fac012982224d191",
+    "6abf71e9f922f3c31f835d29",
+    "6abf71fff922f3c31f8360e4",
+    "6ac0c42906baed899f6735d5",
+    "6acd74e63639df2f93cad03f",
+    "6ac2744c58fd0139bbe51277",
+    "6ac5046e90c1ad54552b4bd6",
+    "6ac6424c1e8c2007fd4c6b9f",
+    "6ac8c9fefac0129822231fba",
+    "6ac903d3fac01298222df2dd",
+    "6ada662eeb49270dce334a4a",
+    "6ade35509e69455ae526ec84",
+    "6adecb442027670b97693978",
+    "6adecaab2027670b97690ce6",
+    "6adecb362027670b97693557",
+    "6adecae82027670b976919c9",
+    "6adecb092027670b9769244c",
+    "6adecb582027670b97694156",
+    "6adecad72027670b97691630",
+    "6adecac62027670b976910fa",
+    "6adecb182027670b97692ae6",
+    "6adecb2b2027670b9769320f",
+    "6ae10f7c6eef632a1c1cfd1b"
+  ],
+  "translations": {
+    "6a5cc41237d1d25ab6b419af": {
+      "name": "Vaga do Canva Pro — 1 mês, garantia total",
+      "description": "Canva Pro oficial — vaga para adicionar à família por 1 mês.\nGarantia total.\nApós o pedido, envie seu e-mail ao administrador."
+    },
+    "6ac2765b58fd0139bbe58c07": {
+      "name": "Canva Pro — vaga para adicionar à família por 1 ano",
+      "description": "Canva Pro oficial — vaga para adicionar à família por 1 ano.\nGarantia total.\nApós o pedido, envie um e-mail ao administrador; o fornecedor informa conclusão em cerca de 15 minutos."
+    },
+    "6a42a6857a292502082c572f": {
+      "name": "Canva Educação — vaga por 3 anos e opção de adicionar à família por 1 ano, garantia total",
+      "description": "Atualize diretamente na sua conta de e-mail. Após a confirmação do pagamento, informe seu endereço do Gmail para que o administrador conclua a atualização. A garantia é de 1 ano. Depois, aguarde a notificação de conclusão e evite enviar mensagens repetidas ao administrador.\n\n— Vaga educacional do Canva, com cerca de 80% das funcionalidades da versão Pro."
+    },
+    "6a40da60a530bb6d36111f5a": {
+      "name": "Vaga Gemini Pro + GG 5 TB — período superior a 1 mês; garantia contra defeitos por 1 mês",
+      "description": "Gemini Pro + GG 5 TB — atualização oficial por 1 mês. O fornecedor informa garantia do proprietário por 1 mês, mas também avisa que a duração de 1 mês não é garantida. Se o pacote for perdido ou ocorrer outro problema após esse período, não há garantia.\n\nApós o pedido, envie um e-mail ao bot; a conclusão pode levar algumas horas. Quando concluir, confira seu e-mail e entre no grupo. Os integrantes do grupo compartilham recursos.\n\nNão há reembolso depois que você entra no grupo e usa o pacote, inclusive se quiser trocar de pacote ou não gostar.\n\nSe ocorrer um erro, consulte as instruções: https://docs.google.com/document/d/1GPn1h7Qw0yo8HsxTNum8FRqzZNxGk_cx8DUxQ6ScN8w/edit?usp=sharing"
+    },
+    "6ae61201ca782692262ef827": {
+      "name": "Link para o Gemini Pro — 18 meses, sem garantia",
+      "description": "Após comprar é só entrar no Gmail que precisa de atualização e colar o link em qualquer site, depois clicar em receber pacote e pronto.  \nA garantia mantém o link por 3 horas.  \nPOR FAVOR NÃO ACUMULE.  \nNenhuma garantia se a oferta for totalmente encerrada pela Jio.  \nNenhuma garantia após ter sido ativado e atualizado."
+    },
+    "6ad65a621d313c71fe80820d": {
+      "name": "Pacote VIP 1 da MUSE API — 333 vídeos, 1 mês, garantia de 15 dias",
+      "description": "🎬 API MUSE VIP 1 — gerador de vídeos com IA.\n\n💎 Informações do pacote\n• Vídeos de 10 s: 333 | 20 s: 166\n• Vídeos de 30 s: 111 | 60 s: 55\n• Qualidade: 720p | Proporções: 16:9 e 9:16\n\n🚀 Recursos\n• Texto para vídeo e imagem para vídeo\n• Gera até 2 vídeos simultaneamente\n• Duração: de 10 a 60 segundos\n• Uso direto no site\n\n⚠️ Observações\n• Vídeos mais longos consomem mais créditos.\n• O saldo é debitado somente por vídeos gerados com sucesso.\n• Créditos de vídeos não utilizados não têm garantia após o vencimento do pacote.\n• Se a chave for inválida ou apresentar defeito, o reembolso será proporcional ao saldo não utilizado, dentro da validade do pacote.\n• A velocidade de processamento depende do sistema.\n\n🌐 https://muse.careflow-demo.online/playground"
+    },
+    "6ad65a851d313c71fe808a94": {
+      "name": "Pacote VIP 2 da MUSE API — 2.000 vídeos, 1 mês, garantia de 15 dias",
+      "description": "🎬 API MUSE VIP 2 — gerador de vídeos com IA.\n\n💎 Informações do pacote\n• Vídeos de 10 s: 2.000 | 20 s: 1.000\n• Vídeos de 30 s: 666 | 60 s: 333\n• Qualidade: 720p | Proporções: 16:9 e 9:16\n\n🚀 Recursos\n• Texto para vídeo e imagem para vídeo\n• Gera até 4 vídeos simultaneamente\n• Duração: de 10 a 60 segundos\n• Uso direto no site\n\n⚠️ Observações\n• Vídeos mais longos consomem mais créditos.\n• O saldo é debitado somente por vídeos gerados com sucesso.\n• Créditos de vídeos não utilizados não têm garantia após o vencimento do pacote.\n• Se a chave for inválida ou apresentar defeito, o reembolso será proporcional ao saldo não utilizado, dentro da validade do pacote.\n• A velocidade de processamento depende do sistema.\n\n🌐 https://muse.careflow-demo.online/playground"
+    },
+    "6ad65aa71d313c71fe80912f": {
+      "name": "Pacote VIP 3 da MUSE API — 6.250 vídeos, 1 mês, garantia de 15 dias",
+      "description": "🎬 API MUSE VIP 3 — gerador de vídeos com IA.\n\n💎 Informações do pacote\n• Vídeos de 10 s: 6.250 | 20 s: 3.125\n• Vídeos de 30 s: 2.083 | 60 s: 1.041\n• Qualidade: 720p | Proporções: 16:9 e 9:16\n\n🚀 Recursos\n• Texto para vídeo e imagem para vídeo\n• Gera até 8 vídeos simultaneamente\n• Duração: de 10 a 60 segundos\n• Uso direto no site\n\n⚠️ Observações\n• Vídeos mais longos consomem mais créditos.\n• O saldo é debitado somente por vídeos gerados com sucesso.\n• Créditos de vídeos não utilizados não têm garantia após o vencimento do pacote.\n• Se a chave for inválida ou apresentar defeito, o reembolso será proporcional ao saldo não utilizado, dentro da validade do pacote.\n• A velocidade de processamento depende do sistema.\n\n🌐 https://muse.careflow-demo.online/playground"
+    },
+    "6acfb04a45252652925dc269": {
+      "name": "US$ 10 em créditos da API do Codex — 1 dia, garantia total",
+      "description": "URL base: https://gpt.teamsoclo.site/v1\nModelo: gpt-5.6-sol, gpt-6-sol, gpt-6.1-sol, gpt-6-luna\nGuia do usuário: https://docs.teamsoclo.site/\nVídeo: https://tinyurl.com/teamsoclovid\nPágina de verificação principal: https://gpt.teamsoclo.site/check\n\nConverta CDK em chave em: https://redeem.teamsoclo.site/\n\nModo de garantia de devolução do dinheiro caso a chave fique inutilizável:\n- Condição: ainda dentro do período de garantia\n- Formulário: Reembolso baseado na quantidade de tokens que o cliente não utilizou"
+    },
+    "6acfb08d45252652925dd0c7": {
+      "name": "US$ 20 em créditos da API do Codex — 1 dia, garantia total",
+      "description": "URL base: https://gpt.teamsoclo.site/v1 \nModelo: gpt-5.6-sol, gpt-6-sol, gpt-6.1-sol, gpt-6-luna \nManual do usuário: https://docs.teamsoclo.site/ \nVídeo: https://tinyurl.com/teamsoclovid\nPágina de verificação de chave: https://gpt.teamsoclo.site/check \n\nTroque o CDK pela chave em: https://redeem.teamsoclo.site/ \n\nCanal de notificação: https://t.me/teamsoclo \nModo de garantia de reembolso caso a chave esteja com defeito:\n- Condição: ainda dentro do período de garantia\n- Método: Reembolso baseado na quantidade de tokens não utilizados pelo cliente"
+    },
+    "6acfb0bd45252652925dda23": {
+      "name": "US$ 50 em créditos da API do Codex — 1 dia, garantia total",
+      "description": "URL base: https://gpt.teamsoclo.site/v1 \nModelo: gpt-5.6-sol, gpt-6-sol, gpt-6.1-sol, gpt-6-luna \nManual do usuário: https://docs.teamsoclo.site/ \nVídeo: https://tinyurl.com/teamsoclovid\nPágina de verificação de chave: https://gpt.teamsoclo.site/check \n\nTroque o CDK pela chave em: https://redeem.teamsoclo.site/ \n\nCanal de notificação: https://t.me/teamsoclo \nModo de garantia de reembolso caso a chave esteja com defeito:\n- Condição: ainda dentro do período de garantia\n- Método: Reembolso baseado na quantidade de tokens não utilizados pelo cliente"
+    },
+    "6acfb11345252652925dec30": {
+      "name": "US$ 100 em créditos da API do Codex — 1 dia, garantia total",
+      "description": "URL base: https://gpt.teamsoclo.site/v1 \nModelo: gpt-5.6-sol, gpt-6-sol, gpt-6.1-sol, gpt-6-luna \nManual do usuário: https://docs.teamsoclo.site/ \nVídeo: https://tinyurl.com/teamsoclovid\nPágina de verificação de chave: https://gpt.teamsoclo.site/check \n\nTroque o CDK pela chave em: https://redeem.teamsoclo.site/ \n\nCanal de notificação: https://t.me/teamsoclo \nModo de garantia de reembolso caso a chave esteja com defeito:\n- Condição: ainda dentro do período de garantia\n- Método: Reembolso baseado na quantidade de tokens não utilizados pelo cliente"
+    },
+    "6acfb16445252652925dfb28": {
+      "name": "US$ 200 em créditos da API do Codex — 1 dia, garantia total",
+      "description": "URL base: https://gpt.teamsoclo.site/v1 \nModelo: gpt-5.6-sol, gpt-6-sol, gpt-6.1-sol, gpt-6-luna \nManual do usuário: https://docs.teamsoclo.site/ \nVídeo: https://tinyurl.com/teamsoclovid\nPágina de verificação de chave: https://gpt.teamsoclo.site/check \n\nTroque o CDK pela chave em: https://redeem.teamsoclo.site/ \n\nCanal de notificação: https://t.me/teamsoclo \nModo de garantia de reembolso caso a chave esteja com defeito:\n- Condição: ainda dentro do período de garantia\n- Método: Reembolso baseado na quantidade de tokens não utilizados pelo cliente"
+    },
+    "6acfb19c45252652925e08d3": {
+      "name": "US$ 500 em créditos da API do Codex — 1 dia, garantia total",
+      "description": "URL base: https://gpt.teamsoclo.site/v1 \nModelo: gpt-5.6-sol, gpt-6-sol, gpt-6.1-sol, gpt-6-luna \nManual do usuário: https://docs.teamsoclo.site/ \nVídeo: https://tinyurl.com/teamsoclovid\nPágina de verificação de chave: https://gpt.teamsoclo.site/check \n\nTroque o CDK pela chave em: https://redeem.teamsoclo.site/ \n\nCanal de notificação: https://t.me/teamsoclo \nModo de garantia de reembolso caso a chave esteja com defeito:\n- Condição: ainda dentro do período de garantia\n- Método: Reembolso baseado na quantidade de tokens não utilizados pelo cliente"
+    },
+    "6acfb1e945252652925e1eb7": {
+      "name": "US$ 1.000 em créditos da API do Codex — 7 dias, garantia total",
+      "description": "URL base: https://gpt.teamsoclo.site/v1 \nModelo: gpt-5.6-sol, gpt-6-sol, gpt-6.1-sol, gpt-6-luna \nManual do usuário: https://docs.teamsoclo.site/ \nVídeo: https://tinyurl.com/teamsoclovid\nPágina de verificação de chave: https://gpt.teamsoclo.site/check \n\nTroque o CDK pela chave em: https://redeem.teamsoclo.site/ \n\nCanal de notificação: https://t.me/teamsoclo \nModo de garantia de reembolso caso a chave esteja com defeito:\n- Condição: ainda dentro do período de garantia\n- Método: Reembolso baseado na quantidade de tokens não utilizados pelo cliente"
+    },
+    "6ae38ee2ed8e0e40e4e20f6a": {
+      "name": "Oferta: US$ 20 em créditos da API do Codex — 1 mês, garantia total",
+      "description": "Converta CDK em chave em: https://redeem.teamsoclo.site/\n\nGuia do usuário: https://docs.teamsoclo.site/\n\nVídeo: https://tinyurl.com/teamsoclovid\n\nGrupo de notificação: https://t.me/nimopremium\nURL base: https://gpt.teamsoclo.site/v1\nModelo: gpt-5.6-sol, gpt-6-sol, gpt-6.1-sol, gpt-6-luna\n\nGuia do usuário: https://docs.teamsoclo.site/\n\nVídeo: https://tinyurl.com/teamsoclovid\n\nPágina de verificação principal: https://gpt.teamsoclo.site/check"
+    },
+    "6acbdfc6fac0129822a68684": {
+      "name": "US$ 10 em créditos da API do Codex — 1 mês, garantia total",
+      "description": "Troque o CDK pela chave em: https://redeem.teamsoclo.site/\n\nGuia do usuário: https://docs.teamsoclo.site/\n\nVídeo: https://tinyurl.com/teamsoclovid\nGrupo de notificação: https://t.me/nimopremium\nURL base: https://gpt.teamsoclo.site/v1\nModelo: gpt-5.6-sol, gpt-6-sol, gpt-6.1-sol, gpt-6-luna\n\nGuia do usuário: https://docs.teamsoclo.site/\n\nVídeo: https://tinyurl.com/teamsoclovid\n\nPágina de verificação principal: https://gpt.teamsoclo.site/check\n\nGarantia de reembolso caso a chave esteja com defeito e não possa ser usada:\n- Condição: ainda dentro do período de garantia\n- Método: Reembolso com base no número de tokens não utilizados"
+    },
+    "6acbe02ffac0129822a692a2": {
+      "name": "US$ 20 em créditos da API do Codex — 1 mês, garantia total",
+      "description": "Troque o CDK pela chave em: https://redeem.teamsoclo.site/\n\nGuia do usuário: https://docs.teamsoclo.site/\n\nVídeo: https://tinyurl.com/teamsoclovid\n\nGrupo de anúncios: https://t.me/nimopremium\nURL base: https://gpt.teamsoclo.site/v1\nModelo: gpt-5.6-sol, gpt-6-sol, gpt-6.1-sol, gpt-6-luna\n\nGuia do usuário: https://docs.teamsoclo.site/\n\nVídeo: https://tinyurl.com/teamsoclovid\n\nPágina de verificação CHAVE: https://gpt.teamsoclo.site/check\n\nModo de reembolso da garantia caso a chave não seja utilizável:\n- Condição: ainda dentro do período de garantia\n- Formulário: Reembolso de acordo com a quantidade de tokens que o cliente não utilizou"
+    },
+    "6acbe006fac0129822a68ea4": {
+      "name": "US$ 50 em créditos da API do Codex — 1 mês, garantia total",
+      "description": "Troque o CDK pela chave em: https://redeem.teamsoclo.site/\n\nGuia do usuário: https://docs.teamsoclo.site/\n\nVídeo: https://tinyurl.com/teamsoclovid\n\nGrupo de anúncios: https://t.me/nimopremium\nURL base: https://gpt.teamsoclo.site/v1\nModelo: gpt-5.6-sol, gpt-6-sol, gpt-6.1-sol, gpt-6-luna\n\nGuia do usuário: https://docs.teamsoclo.site/\n\nVídeo: https://tinyurl.com/teamsoclovid\n\nPágina de verificação CHAVE: https://gpt.teamsoclo.site/check\n\nModo de reembolso da garantia caso a chave não seja utilizável:\n- Condição: ainda dentro do período de garantia\n- Formulário: Reembolso de acordo com a quantidade de tokens que o cliente não utilizou"
+    },
+    "6acc6aca9112e477c9ad86eb": {
+      "name": "US$ 100 em créditos da API do Codex — 1 mês, garantia total",
+      "description": "Troque o CDK pela chave em: https://redeem.teamsoclo.site/\n\nGuia do usuário: https://docs.teamsoclo.site/\n\nVídeo: https://tinyurl.com/teamsoclovid\n\nGrupo de anúncios: https://t.me/nimopremium\nURL base: https://gpt.teamsoclo.site/v1\nModelo: gpt-5.6-sol, gpt-6-sol, gpt-6.1-sol, gpt-6-luna\n\nGuia do usuário: https://docs.teamsoclo.site/\n\nVídeo: https://tinyurl.com/teamsoclovid\n\nPágina de verificação CHAVE: https://gpt.teamsoclo.site/check\n\nModo de reembolso da garantia caso a chave não seja utilizável:\n- Condição: ainda dentro do período de garantia\n- Formulário: Reembolso de acordo com a quantidade de tokens que o cliente não utilizou"
+    },
+    "6acbe092fac0129822a6a037": {
+      "name": "US$ 200 em créditos da API do Codex — 1 mês, garantia total",
+      "description": "Troque o CDK pela chave em: https://redeem.teamsoclo.site/\n\nGuia do usuário: https://docs.teamsoclo.site/\n\nVídeo: https://tinyurl.com/teamsoclovid\n\nGrupo de anúncios: https://t.me/nimopremium\nURL base: https://gpt.teamsoclo.site/v1\nModelo: gpt-5.6-sol, gpt-6-sol, gpt-6.1-sol, gpt-6-luna\n\nGuia do usuário: https://docs.teamsoclo.site/\n\nVídeo: https://tinyurl.com/teamsoclovid\n\nPágina de verificação CHAVE: https://gpt.teamsoclo.site/check\n\nModo de reembolso da garantia caso a chave não seja utilizável:\n- Condição: ainda dentro do período de garantia\n- Formulário: Reembolso de acordo com a quantidade de tokens que o cliente não utilizou"
+    },
+    "6acbe0adfac0129822a6a3bf": {
+      "name": "US$ 500 em créditos da API do Codex — 1 mês, garantia total",
+      "description": "Troque o CDK pela chave em: https://redeem.teamsoclo.site/\n\nGuia do usuário: https://docs.teamsoclo.site/\n\nVídeo: https://tinyurl.com/teamsoclovid\n\nGrupo de anúncios: https://t.me/nimopremium\nURL base: https://gpt.teamsoclo.site/v1\nModelo: gpt-5.6-sol, gpt-6-sol, gpt-6.1-sol, gpt-6-luna\n\nGuia do usuário: https://docs.teamsoclo.site/\n\nVídeo: https://tinyurl.com/teamsoclovid\n\nPágina de verificação CHAVE: https://gpt.teamsoclo.site/check\n\nModo de reembolso da garantia caso a chave não seja utilizável:\n- Condição: ainda dentro do período de garantia\n- Formulário: Reembolso de acordo com a quantidade de tokens que o cliente não utilizou"
+    },
+    "6abfdf23f922f3c31f968cff": {
+      "name": "Microsoft Office 365 Premium — vaga por 12 meses, garantia total",
+      "description": "Microsoft Office 365 Family vaga + 1TB OneDrive, 1 anos de garantia total, atualização requer apenas um e-mail, 1 e-mail pode ser usado simultaneamente em dispositivos 5 - Pacote Office premium completo: Word completo, Excel, PowerPoint, Outlook... sempre atualizado para a versão mais recente e integrado com ferramentas inteligentes IA (Editor, Designer). - Enorme armazenamento em nuvem: fornece OneDrive de 1 TB para cada conta para armazenar e sincronizar dados. - Uso em vários dispositivos: instale e use simultaneamente em até dispositivos 5 (Windows, Mac, iOS, Android). - Segurança máxima: proteção contra ransomware, antivírus Microsoft Defender e caixa de correio do Outlook altamente segura e sem anúncios. - Vantagens incluídas: Use o editor de vídeo Clipchamp Premium e receba suporte técnico prioritário de Microsoft. Este é um espaço familiar, não uma conta de grupo familiar principal. Não são aceitos motivos de leitura incorreta ou de compra acidental..."
+    },
+    "6ab90c58266735c89777cc46": {
+      "name": "Chave genuína do Windows 10/11 Pro — 20 anos, garantia de 60 dias",
+      "description": "🔐 Windows 10 Pro / Windows 11 Pro chave de licença\n💻 Ativação para computador 1 (1 PC/Laptop)\n⚡ Ativação on-line rápida\n✅ Licença genuína\n🔄 Receba todas as atualizações de Microsoft\n🛡️ Sem marca d'água, uso total dos recursos Windows Pro\n📥 Suporte para instalação e ativação remota, se necessário"
+    },
+    "6ab348b25bf626c6e95e7105": {
+      "name": "Código YouTube Premium — plano pessoal por 3 meses, garantia total",
+      "description": "❞ Descrição:\n• Método de pagamento necessário para ativar\n• Resgatar página: https://www.youtube.com/redeem\n• Avaliação — funciona apenas em contas sem assinatura anterior/ativa\n• Garantia total após ativação (3 meses)\n• Deve ser resgatado dentro de 7 dias a partir da data da compra\n• Use uma VPN de países permitidos para usar o código de resgate\n• Lista de países permitidos:\nPL; EM; SER; AR; EU IA; CA; DK; ISTO; MX; França; EA; Holanda;\nZA; BR; TR; NÓS; SE; UA; DE; GB; ES; CH; Hong Kong\n\nCOMPRE SOMENTE SE VOCÊ SABE COMO USAR (ESTE É UM PACOTE GRATUITO DE 3 MÊS QUE VOCÊ DEVE PAGAR, E ENTÃO VOCÊ PODE CANCELAR O PERFIL DE PAGAMENTO PARA EVITAR SER COBRADO)"
+    },
+    "6ac28e5458fd0139bbea8931": {
+      "name": "Grok API — 10 milhões de créditos, 3 dias de garantia total",
+      "description": "URL base: https://gpt.teamsoclo.site/v1\nModelo: grok-4.5, grok-4.6, grok-4.7\nGuia do usuário: https://docs.teamsoclo.site/\nVídeo: https://tinyurl.com/teamsoclovid\nPágina de verificação CHAVE: https://gpt.teamsoclo.site/check\n\nConverta CDK em chave em: https://redeem.teamsoclo.site/\n\nModo de garantia de reembolso caso a chave fique inutilizável:\n- Condição: ainda dentro do período de garantia\n- Formulário: Reembolso baseado na quantidade de tokens que o cliente não utilizou"
+    },
+    "6ac28e6858fd0139bbea8c18": {
+      "name": "Grok API — 30 milhões de créditos, 3 dias de garantia total",
+      "description": "URL base: https://gpt.teamsoclo.site/v1\nModelo: grok-4.5, grok-4.6, grok-4.7\nGuia do usuário: https://docs.teamsoclo.site/\nVídeo: https://tinyurl.com/teamsoclovid\nPágina de verificação CHAVE: https://gpt.teamsoclo.site/check\n\nConverta CDK em chave em: https://redeem.teamsoclo.site/\n\nModo de garantia de reembolso caso a chave fique inutilizável:\n- Condição: ainda dentro do período de garantia\n- Formulário: Reembolso baseado na quantidade de tokens que o cliente não utilizou"
+    },
+    "6ac28edb58fd0139bbea9829": {
+      "name": "Grok API — 50 milhões de créditos, 3 dias de garantia total",
+      "description": "URL base: https://gpt.teamsoclo.site/v1\nModelo: grok-4.5, grok-4.6, grok-4.7\nGuia do usuário: https://docs.teamsoclo.site/\nVídeo: https://tinyurl.com/teamsoclovid\nPágina de verificação principal: https://gpt.teamsoclo.site/check\n\nConverta CDK em chave em: https://redeem.teamsoclo.site/\n\nGarantia de reembolso caso a chave esteja com defeito e não possa ser usada:\n- Condição: ainda dentro do período de garantia\n- Formulário: Reembolso de acordo com a quantidade de tokens que o cliente não utilizou"
+    },
+    "6ac28f0158fd0139bbea9c4f": {
+      "name": "Grok API — 100 milhões de créditos, 5 dias de garantia total",
+      "description": "URL base: https://gpt.teamsoclo.site/v1\nModelo: grok-4.5, grok-4.6, grok-4.7\nGuia do usuário: https://docs.teamsoclo.site/\nVídeo: https://tinyurl.com/teamsoclovid\nPágina de verificação principal: https://gpt.teamsoclo.site/check\n\nConverta CDK em chave em: https://redeem.teamsoclo.site/\n\nGarantia de reembolso caso a chave esteja com defeito e não possa ser usada:\n- Condição: ainda dentro do período de garantia\n- Formulário: Reembolso de acordo com a quantidade de tokens que o cliente não utilizou"
+    },
+    "6acfb38245252652925e6c87": {
+      "name": "US$ 1.000 em créditos da API Claude — 7 dias, garantia total",
+      "description": "URL base: https://gpt.teamsoclo.site/\nModelo: claude-fable-5, claude-fable-5-1, claude-haiku-4-5, claude-opus-4-6, claude-opus-4-7, claude-opus-4-8, claude-opus-5, claude-opus-5-5, claude-sonnet-4-6, claude-sonnet-5\nGuia do usuário: https://docs.teamsoclo.site/\n\nVídeo Codex Configuração: https://tinyurl.com/teamsoclovid\nVídeo Claude Setup:\nhttps://tinyurl.com/teamsoclovidclaudesetup\n\nPágina de verificação principal: https://gpt.teamsoclo.site/check\n\nConverta CDK em chave em: https://redeem.teamsoclo.site/\n\nModo de garantia de reembolso caso a chave seja inválida:\n- Condição: ainda dentro do período de garantia\n- Método: Reembolso de acordo com a quantidade de tokens não utilizados pelo cliente"
+    },
+    "6acbe5b8fac0129822a737cd": {
+      "name": "US$ 10 em créditos da API Claude — 1 mês, garantia total",
+      "description": "URL base: https://gpt.teamsoclo.site/\nModelo: claude-fable-5, claude-fable-5-1, claude-haiku-4-5, claude-opus-4-6, claude-opus-4-7, claude-opus-4-8, claude-opus-5, claude-opus-5-5, claude-sonnet-4-6, claude-sonnet-5\nGuia do usuário: https://docs.teamsoclo.site/\n\nVídeo Codex Configuração: https://tinyurl.com/teamsoclovid\nVídeo Claude Setup: \nhttps://tinyurl.com/teamsoclovidclaudesetup\n\nPágina de verificação principal: https://gpt.teamsoclo.site/check\n\nConverta CDK em chave em: https://redeem.teamsoclo.site/\n\nGrupo de notificação: https://t.me/nimopremium\n\nModo de garantia de reembolso caso a chave não possa ser usada:\n- Condição: ainda dentro do período de garantia\n- Método: Reembolso baseado na quantidade de tokens que o cliente não utilizou"
+    },
+    "6acbe5d0fac0129822a73a7d": {
+      "name": "US$ 20 em créditos da API Claude — 1 mês, garantia total",
+      "description": "URL base: https://gpt.teamsoclo.site/\nModelo: claude-fable-5, claude-fable-5-1, claude-haiku-4-5, claude-opus-4-6, claude-opus-4-7, claude-opus-4-8, claude-opus-5, claude-opus-5-5, claude-sonnet-4-6, claude-sonnet-5\nGuia do usuário: https://docs.teamsoclo.site/\n\nVídeo Codex Configuração: https://tinyurl.com/teamsoclovid\nVídeo Claude Setup: \nhttps://tinyurl.com/teamsoclovidclaudesetup\n\nPágina de verificação principal: https://gpt.teamsoclo.site/check\n\nConverta CDK em chave em: https://redeem.teamsoclo.site/\n\nGrupo de notificação: https://t.me/nimopremium\n\nModo de garantia de reembolso caso a chave não possa ser usada:\n- Condição: ainda dentro do período de garantia\n- Método: Reembolso baseado na quantidade de tokens que o cliente não utilizou"
+    },
+    "6acbe70afac0129822a760f8": {
+      "name": "US$ 50 em créditos da API Claude — 1 mês, garantia total",
+      "description": "URL base: https://gpt.teamsoclo.site/\nModelo: claude-fable-5, claude-fable-5-1, claude-haiku-4-5, claude-opus-4-6, claude-opus-4-7, claude-opus-4-8, claude-opus-5, claude-opus-5-5, claude-sonnet-4-6, claude-sonnet-5\nGuia do usuário: https://docs.teamsoclo.site/\n\nVídeo Codex Configuração: https://tinyurl.com/teamsoclovid\nVídeo Claude Setup: \nhttps://tinyurl.com/teamsoclovidclaudesetup\n\nPágina de verificação principal: https://gpt.teamsoclo.site/check\n\nConverta CDK em chave em: https://redeem.teamsoclo.site/\n\nGrupo de notificação: https://t.me/nimopremium\n\nModo de garantia de reembolso caso a chave não possa ser usada:\n- Condição: ainda dentro do período de garantia\n- Método: Reembolso baseado na quantidade de tokens que o cliente não utilizou"
+    },
+    "6acf1f22672d61b9bd71d77c": {
+      "name": "US$ 100 em créditos da API Claude — 1 mês, garantia total",
+      "description": "URL base: https://gpt.teamsoclo.site/\nModelo: claude-fable-5, claude-fable-5-1, claude-haiku-4-5, claude-opus-4-6, claude-opus-4-7, claude-opus-4-8, claude-opus-5, claude-opus-5-5, claude-sonnet-4-6, claude-sonnet-5\nGuia do usuário: https://docs.teamsoclo.site/\n\nVídeo Codex Configuração: https://tinyurl.com/teamsoclovid\nVídeo Claude Setup: \nhttps://tinyurl.com/teamsoclovidclaudesetup\n\nPágina de verificação principal: https://gpt.teamsoclo.site/check\n\nConverta CDK em chave em: https://redeem.teamsoclo.site/\n\nGrupo de notificação: https://t.me/nimopremium\n\nModo de garantia de reembolso caso a chave não possa ser usada:\n- Condição: ainda dentro do período de garantia\n- Método: Reembolso baseado na quantidade de tokens que o cliente não utilizou"
+    },
+    "6acf1fd4672d61b9bd71fb2f": {
+      "name": "US$ 200 em créditos da API Claude — 1 mês, garantia total",
+      "description": "URL base: https://gpt.teamsoclo.site/\nModelo: claude-fable-5, claude-fable-5-1, claude-haiku-4-5, claude-opus-4-6, claude-opus-4-7, claude-opus-4-8, claude-opus-5, claude-opus-5-5, claude-sonnet-4-6, claude-sonnet-5\nGuia do usuário: https://docs.teamsoclo.site/\n\nVídeo Codex Configuração: https://tinyurl.com/teamsoclovid\nVídeo Claude Setup: \nhttps://tinyurl.com/teamsoclovidclaudesetup\n\nPágina de verificação principal: https://gpt.teamsoclo.site/check\n\nConverta CDK em chave em: https://redeem.teamsoclo.site/\n\nGrupo de notificação: https://t.me/nimopremium\n\nModo de garantia de reembolso caso a chave não possa ser usada:\n- Condição: ainda dentro do período de garantia\n- Método: Reembolso baseado na quantidade de tokens que o cliente não utilizou"
+    },
+    "6acbe8bcfac0129822a794bd": {
+      "name": "US$ 500 em créditos da API Claude — 30 dias, garantia total",
+      "description": "URL base: https://gpt.teamsoclo.site/\nModelo: claude-fable-5, claude-fable-5-1, claude-haiku-4-5, claude-opus-4-6, claude-opus-4-7, claude-opus-4-8, claude-opus-5, claude-opus-5-5, claude-sonnet-4-6, claude-sonnet-5\nGuia do usuário: https://docs.teamsoclo.site/\n\nVídeo Codex Configuração: https://tinyurl.com/teamsoclovid\nVídeo Claude Setup: \nhttps://tinyurl.com/teamsoclovidclaudesetup\n\nPágina de verificação principal: https://gpt.teamsoclo.site/check\n\nConverta CDK em chave em: https://redeem.teamsoclo.site/\n\nGrupo de notificação: https://t.me/nimopremium\n\nModo de garantia de reembolso caso a chave não possa ser usada:\n- Condição: ainda dentro do período de garantia\n- Método: Reembolso baseado na quantidade de tokens que o cliente não utilizou"
+    },
+    "6acbe8fafac0129822a79e44": {
+      "name": "US$ 1.000 em créditos da API Claude — 30 dias, garantia total",
+      "description": "URL base: https://gpt.teamsoclo.site/\nModelo: claude-fable-5, claude-fable-5-1, claude-haiku-4-5, claude-opus-4-6, claude-opus-4-7, claude-opus-4-8, claude-opus-5, claude-opus-5-5, claude-sonnet-4-6, claude-sonnet-5\nGuia do usuário: https://docs.teamsoclo.site/\n\nVídeo Codex Configuração: https://tinyurl.com/teamsoclovid\nVídeo Claude Setup: \nhttps://tinyurl.com/teamsoclovidclaudesetup\n\nPágina de verificação principal: https://gpt.teamsoclo.site/check\n\nConverta CDK em chave em: https://redeem.teamsoclo.site/\n\nGrupo de notificação: https://t.me/nimopremium\n\nModo de garantia de reembolso caso a chave não possa ser usada:\n- Condição: ainda dentro do período de garantia\n- Método: Reembolso baseado na quantidade de tokens que o cliente não utilizou"
+    },
+    "6ab386770944def028abe0f5": {
+      "name": "Resgate de 1 milhão de créditos da ElevenLabs",
+      "description": "🔥Vibi.Pro\nvibi.pro é uma ferramenta online de geração de voz IA e parceira oficial de ElevenLabs e MiniMax.\n\n💎 COMPROMISSO DA VIBI COM VOCÊ\n✅ Modelos oficiais IA – Acesso direto aos modelos de voz de ElevenLabs e MiniMax. Sem modelos falsos, sem cópias de baixa qualidade.\n✅ Mais de 10,000 vozes multilíngues – Uma biblioteca de voz diversificada com vários idiomas e estilos, fornecendo resultados naturais e de alta qualidade para diversas necessidades de criação de conteúdo.\n✅ Os créditos mensais não expiram – Você paga apenas pelo que usar. Quaisquer créditos restantes serão salvos em sua conta e poderão ser usados ​​a qualquer momento sem expirar no final do mês.\n✅ Proteção de crédito durante todo o uso – Seus créditos ficam protegidos durante todo o tempo de uso do serviço, proporcionando total tranquilidade ao comprar e experimentar o VIBI.\n\n🛡️ POLÍTICA DE GARANTIA\nA VIBI fornece suporte e assistência abrangente nos seguintes casos:\n• Seu código de ativação não pode ser ativado.\n• O número de créditos adicionados à sua conta está incorreto.\n• Ocorrem problemas técnicos devido ao sistema VIBI.\nNossa equipe de suporte ajudará e resolverá quaisquer problemas relacionados ao sistema durante o uso do serviço.\n\n⚠️ NOTAS IMPORTANTES\n• Cada código de ativação só pode ser usado uma vez.\n• Certifique-se de estar conectado à conta correta antes de inserir o código.\n• Depois que um código de ativação for ativado, ele não poderá ser reembolsado, transferido ou transferido para outra conta.\n\n🌐 Use em: Vibi.pro"
+    },
+    "6ab386790944def028abe14d": {
+      "name": "Resgate de 3 milhões de créditos da ElevenLabs",
+      "description": "🔥Vibi.Pro\nvibi.pro é uma ferramenta online de geração de voz IA e parceira oficial de ElevenLabs e MiniMax.\n\n💎 COMPROMISSO DA VIBI COM VOCÊ\n✅ Modelos oficiais IA – Acesso direto aos modelos de voz de ElevenLabs e MiniMax. Sem modelos falsos, sem cópias de baixa qualidade.\n✅ Mais de 10,000 vozes multilíngues – Uma biblioteca de voz diversificada com vários idiomas e estilos, fornecendo resultados naturais e de alta qualidade para diversas necessidades de criação de conteúdo.\n✅ Os créditos mensais não expiram – Você paga apenas pelo que usar. Quaisquer créditos restantes serão salvos em sua conta e poderão ser usados ​​a qualquer momento sem expirar no final do mês.\n✅ Proteção de crédito durante todo o uso – Seus créditos ficam protegidos durante todo o tempo de uso do serviço, proporcionando total tranquilidade ao comprar e experimentar o VIBI.\n\n🛡️ POLÍTICA DE GARANTIA\nA VIBI fornece suporte e assistência abrangente nos seguintes casos:\n• Seu código de ativação não pode ser ativado.\n• O número de créditos adicionados à sua conta está incorreto.\n• Ocorrem problemas técnicos devido ao sistema VIBI.\nNossa equipe de suporte ajudará e resolverá quaisquer problemas relacionados ao sistema durante o uso do serviço.\n\n⚠️ NOTAS IMPORTANTES\n• Cada código de ativação só pode ser usado uma vez.\n• Certifique-se de estar conectado à conta correta antes de inserir o código.\n• Depois que um código de ativação for ativado, ele não poderá ser reembolsado, transferido ou transferido para outra conta.\n\n🌐 Use em: Vibi.pro"
+    },
+    "6ab3867d0944def028abe1a2": {
+      "name": "Resgate de 7 milhões de créditos da ElevenLabs",
+      "description": "🔥Vibi.Pro\nvibi.pro é uma ferramenta online de geração de voz IA e parceira oficial de ElevenLabs e MiniMax.\n\n💎 COMPROMISSO DA VIBI COM VOCÊ\n✅ Modelos oficiais IA – Acesso direto aos modelos de voz de ElevenLabs e MiniMax. Sem modelos falsos, sem cópias de baixa qualidade.\n✅ Mais de 10,000 vozes multilíngues – Uma biblioteca de voz diversificada com vários idiomas e estilos, fornecendo resultados naturais e de alta qualidade para diversas necessidades de criação de conteúdo.\n✅ Os créditos mensais não expiram – Você paga apenas pelo que usar. Quaisquer créditos restantes serão salvos em sua conta e poderão ser usados ​​a qualquer momento sem expirar no final do mês.\n✅ Proteção de crédito durante todo o uso – Seus créditos ficam protegidos durante todo o tempo de uso do serviço, proporcionando total tranquilidade ao comprar e experimentar o VIBI.\n\n🛡️ POLÍTICA DE GARANTIA\nA VIBI fornece suporte e assistência abrangente nos seguintes casos:\n• Seu código de ativação não pode ser ativado.\n• O número de créditos adicionados à sua conta está incorreto.\n• Ocorrem problemas técnicos devido ao sistema VIBI.\nNossa equipe de suporte ajudará e resolverá quaisquer problemas relacionados ao sistema durante o uso do serviço.\n\n⚠️ NOTAS IMPORTANTES\n• Cada código de ativação só pode ser usado uma vez.\n• Certifique-se de estar conectado à conta correta antes de inserir o código.\n• Depois que um código de ativação for ativado, ele não poderá ser reembolsado, transferido ou transferido para outra conta.\n\n🌐 Use em: Vibi.pro"
+    },
+    "6ab3866f0944def028abe00e": {
+      "name": "Resgate de 131 mil créditos da ElevenLabs",
+      "description": "🔥Vibi.Pro\nvibi.pro é uma ferramenta online de geração de voz IA e parceira oficial de ElevenLabs e MiniMax.\n\n💎 COMPROMISSO DA VIBI COM VOCÊ\n✅ Modelos oficiais IA – Acesso direto aos modelos de voz de ElevenLabs e MiniMax. Sem modelos falsos, sem cópias de baixa qualidade.\n✅ Mais de 10,000 vozes multilíngues – Uma biblioteca de voz diversificada com vários idiomas e estilos, fornecendo resultados naturais e de alta qualidade para diversas necessidades de criação de conteúdo.\n✅ Os créditos mensais não expiram – Você paga apenas pelo que usar. Quaisquer créditos restantes serão salvos em sua conta e poderão ser usados ​​a qualquer momento sem expirar no final do mês.\n✅ Proteção de crédito durante todo o uso – Seus créditos ficam protegidos durante todo o tempo de uso do serviço, proporcionando total tranquilidade ao comprar e experimentar o VIBI.\n\n🛡️ POLÍTICA DE GARANTIA\nA VIBI fornece suporte e assistência abrangente nos seguintes casos:\n• Seu código de ativação não pode ser ativado.\n• O número de créditos adicionados à sua conta está incorreto.\n• Ocorrem problemas técnicos devido ao sistema VIBI.\nNossa equipe de suporte ajudará e resolverá quaisquer problemas relacionados ao sistema durante o uso do serviço.\n\n⚠️ NOTAS IMPORTANTES\n• Cada código de ativação só pode ser usado uma vez.\n• Certifique-se de estar conectado à conta correta antes de inserir o código.\n• Depois que um código de ativação for ativado, ele não poderá ser reembolsado, transferido ou transferido para outra conta.\n\n🌐 Use em: Vibi.pro"
+    },
+    "6ab386750944def028abe088": {
+      "name": "Resgate de 300 mil créditos da ElevenLabs",
+      "description": "🔥Vibi.Pro\nvibi.pro é uma ferramenta online de geração de voz IA e parceira oficial de ElevenLabs e MiniMax.\n\n💎 COMPROMISSO DA VIBI COM VOCÊ\n✅ Modelos oficiais IA – Acesso direto aos modelos de voz de ElevenLabs e MiniMax. Sem modelos falsos, sem cópias de baixa qualidade.\n✅ Mais de 10,000 vozes multilíngues – Uma biblioteca de voz diversificada com vários idiomas e estilos, fornecendo resultados naturais e de alta qualidade para diversas necessidades de criação de conteúdo.\n✅ Os créditos mensais não expiram – Você paga apenas pelo que usar. Quaisquer créditos restantes serão salvos em sua conta e poderão ser usados ​​a qualquer momento sem expirar no final do mês.\n✅ Proteção de crédito durante todo o uso – Seus créditos ficam protegidos durante todo o tempo de uso do serviço, proporcionando total tranquilidade ao comprar e experimentar o VIBI.\n\n🛡️ POLÍTICA DE GARANTIA\nA VIBI fornece suporte e assistência abrangente nos seguintes casos:\n• Seu código de ativação não pode ser ativado.\n• O número de créditos adicionados à sua conta está incorreto.\n• Ocorrem problemas técnicos devido ao sistema VIBI.\nNossa equipe de suporte ajudará e resolverá quaisquer problemas relacionados ao sistema durante o uso do serviço.\n\n⚠️ NOTAS IMPORTANTES\n• Cada código de ativação só pode ser usado uma vez.\n• Certifique-se de estar conectado à conta correta antes de inserir o código.\n• Depois que um código de ativação for ativado, ele não poderá ser reembolsado, transferido ou transferido para outra conta.\n\n🌐 Use em: Vibi.pro"
+    },
+    "6a79f0038bd496b9f54f9178": {
+      "name": "Kling — 65 créditos por 1 mês, garantia total",
+      "description": "A conta perderá crédito após um período de tempo e deverá ser usada imediatamente\nNota importante:\n❌ Ative a guia anônima ou o Sai Proxy\n❌ Nenhuma garantia para erros de ocupado\nInstruções de uso \nFormato: TK|MK separados por \"|\"\n1. No computador: \nCada perfil é uma conta Kling IA, fazendo vários vídeos ao mesmo tempo\n2. Ao telefone: \nFaça login em sua conta > Use todos os créditos > Feche essa guia > Volte para a etapa 1"
+    },
+    "6a755120552f7596443e8b1a": {
+      "name": "Aplicativos Autodesk — AutoCAD, 3ds Max e outros; 3 anos, garantia de 1 ano",
+      "description": "Autodesk Todos os aplicativos (46 Aplicativos) – Licença de 3 anos\n\n1-ano de garantia\n\n3ds Max, Advance Steel, Alias AutoStudio, Arnold, AutoCAD (incluindo conjuntos de ferramentas especializadas), AutoCAD LT, CFD Ultimate, Civil 3D, Cloud Worksharing, Fabrication CADmep, Fabrication CAMduct, Fabrication ESTmep, Factory Design Utilities, Flame, FlexSim, Flow Production Tracking, Forma for Buildings, Forma for Construction, Forma Site Design, Fusion with FeatureCAM, Fusion for Institutions, Fusion with Moldflow Adviser, Fusion with Netfabb, Golaem, InfraWorks, Inventor CAM Ultimate, Inventor Nastran, Inventor Nesting, Inventor Professional, Inventor Tolerance Analysis, Maya, MotionBuilder, Mudbox, Navisworks Manage, NavPack Core, OptQuest, Point Layout, PowerInspect Ultimate, PowerShape Ultimate, ReCap Pro, Revit, Robot Structural Analysis Professional, Structural Bridge Design, Vault Profissional, Rastreamento de Veículos, VRED Profissional."
+    },
+    "6ab16b6df6d40479fde44d34": {
+      "name": "Código Duolingo Super — 1 ano, garantia de 1 mês",
+      "description": "- Experiência de aprendizagem de idiomas suave, eficaz e ilimitada. Compre o pacote agora para receber ofertas especiais para a conta principal ativa. \n- Formato: Link para receber o pacote\n- Duração do pacote: 1 ano\n- Garantia: 1 mês\n- Utilize imediatamente após o pagamento.\n- Use uma VPN indiana para receber o pacote.\n- Não é necessário cartão de pagamento adicional, acesse o link enviado pelo Bot para receber a oferta."
+    },
+    "6aac46695271203cb11cfe0c": {
+      "name": "Meitu VIP+ — 7 dias, garantia total",
+      "description": "Desbloqueie a biblioteca completa de filtros VIP, ferramentas IA, remoção de objetos, exporte arquivos HD/4K sem marca d'água.\n\nNota:\nFaça login dentro do dia; fazer login em um novo dia anulará a garantia.\nUse em um dispositivo, não saia, não compartilhe a conta. A violação anulará a garantia."
+    },
+    "6ad2740a5f42a3a253f1377b": {
+      "name": "Meitu VIP+ — 30 dias, garantia total",
+      "description": "Desbloqueie a biblioteca completa de filtros VIP, ferramentas IA, remoção de objetos, exporte arquivos HD/4K sem marca d'água.\n\nNota:\nFaça login dentro do dia; fazer login em um novo dia anulará a garantia.\nUse em um dispositivo, não saia, não compartilhe a conta. A violação anulará a garantia."
+    },
+    "6a8ddb7ba806552096576c88": {
+      "name": "Meitu VIP+ — 90 dias, garantia total",
+      "description": "Desbloqueie a biblioteca completa de filtros VIP, ferramentas IA, remoção de objetos, exporte arquivos HD/4K sem marca d'água.\n\nNota:\nFaça login dentro do dia; fazer login em um novo dia anulará a garantia.\nUse em um dispositivo, não saia, não compartilhe a conta. A violação anulará a garantia."
+    },
+    "6aac4b645271203cb11d8df6": {
+      "name": "Código Notion Business — 3 meses, garantia total",
+      "description": "- Código para receber pacote empresarial Notion, não uma vaga de equipe  \n- Formato: Link para receber o pacote  \n- Duração do pacote: 3 meses  \n- Garantia: 3 meses  \n- Observação: o código se aplica apenas a um espaço de trabalho que nunca foi atualizado e o pacote só pode ser aplicado ao membro 1."
+    },
+    "6ac3e5948931359f49e0b788": {
+      "name": "Vaga do Notion Business com IA oficial — 3 meses, garantia total",
+      "description": "📝 Você precisa fornecer o e-mail da sua conta Notion para que a Loja faça a atualização para você. (O recurso IA pode ser usado) - Você receberá um convite para ingressar no espaço de trabalho da loja e obterá Notion benefícios comerciais ao se tornar um membro, e poderá usar os recursos comerciais ao usar e editar documentos no espaço de trabalho da loja. - NÃO há garantia para dados armazenados no Team Workspace. A renovação exigirá a mudança para um espaço de trabalho diferente ⏳ Duração: 3 meses 📦 Formato de entrega: Endereço de e-mail a ser atualizado - IA cota compartilhada em todo o espaço de trabalho - Não para fins de codificação"
+    },
+    "6ac3e5f48931359f49e0c49a": {
+      "name": "Código Notion Business — 1 ano",
+      "description": "Código oficial genuíno.  \nGarantia ativada  \n⚠️⚠️Como este é um código de resgate oficial, pode haver momentos em que ficaremos sem estoque, então envie um e-mail para o bot para que possamos enviar o resgate diretamente para o seu e-mail para maior comodidade! Obrigado⚠️⚠️"
+    },
+    "6aba68dc31a482e3ae2917de": {
+      "name": "Freepik — 45 mil créditos, 1 mês de acesso, garantia de 2 dias",
+      "description": "Descrição não informada pelo fornecedor."
+    },
+    "6acfc1dd1062939df5132ce8": {
+      "name": "Painel web da API Freepik/Magnific Premium — 30 dias, garantia total",
+      "description": "Painel Web com interface simples e operação rápida: basta colar o link do recurso/imagem no painel para processar e baixar o arquivo.\n\nPrincipais características:\n- 1-clique em download do arquivo: cole um link Freepik ou Magnific para fazer o download imediatamente, sem perda de tempo fazendo login em uma conta.\n- Velocidade otimizada: Interface super limpa, processamento rápido, extremamente conveniente para quem precisa baixar continuamente recursos de design.\n- Atende às necessidades: Utilizado especificamente para obter links e obter arquivos originais o mais rápido possível.\n• Não inclui recursos IA.\n• Baixar arquivos 20 / dia 1 | Baixar arquivos 600 / 30 dias"
+    },
+    "6acfc1f11062939df5133120": {
+      "name": "Painel web da API Freepik/Magnific Premium — 60 dias, garantia total",
+      "description": "Painel Web com interface simples e operação rápida: basta colar o link do recurso/imagem no painel para processar e baixar o arquivo.\n\nPrincipais características:\n- 1-clique em download do arquivo: cole um link Freepik ou Magnific para fazer o download imediatamente, sem perda de tempo fazendo login em uma conta.\n- Velocidade otimizada: Interface super limpa, processamento rápido, extremamente conveniente para quem precisa baixar continuamente recursos de design.\n- Atende às necessidades: Utilizado especificamente para obter links e obter arquivos originais o mais rápido possível.\n• Não inclui recursos IA.\n• Baixar arquivos 20 / dia 1 | Baixar arquivos 600 / 30 dias"
+    },
+    "6abf726ff922f3c31f837251": {
+      "name": "Vaga Lovable Lite — 1 ano, garantia de 3 meses",
+      "description": "Envie um e-mail para o bot para atualizar para a conta principal sem precisar de senha. Se você precisa de uma conta de nível, mas não quer a conta principal, tudo bem!  \nPeríodo de uso: 12 meses para experimentar os recursos do platformng.crédito Criação: Receba créditos 300 (uma única vez) imediatamente para começar a construir o projectn.crédito Diariamente: Obtenha créditos gratuitos 5 adicionais todos os dias para continuar editando e desenvolvendo pequenos aplicativos."
+    },
+    "6ad7dfc5cf74fcbdf587e05c": {
+      "name": "Código Lovable Lite — 1 ano",
+      "description": "❞ Descrição:\n• Não é necessário método de pagamento para ativação\n• Resgate o código em sua própria conta\n• Avaliação — funciona apenas em contas que nunca tiveram/não estão assinadas no momento\n• Garantia após ativação - 2 meses\n• Deve ser ativado dentro de 48 horas após a compra\nPOR FAVOR, ENVIE UMA MENSAGEM INICIATIVA AO ADMINISTRADOR PARA RECEBER O CÓDIGO"
+    },
+    "6a9e584a4f6e4dbc77f4defb": {
+      "name": "Código NordVPN — 10 dispositivos, 3 meses, garantia total",
+      "description": "- Dispositivos NordVPN 10\n- Duração do pacote: 3 meses\n- Garantia: 3 meses."
+    },
+    "6acb61eafac01298228cf433": {
+      "name": "Adobe Creative Cloud (todos os aplicativos) — 14 dias, garantia total",
+      "description": "- Adobe Todos os aplicativos 14D Add Teams para uso em dispositivos 2  \n!!! VIP: OS CLIENTES PODEM REIVINDICAR INICIATIVAMENTE A GARANTIA!!!\n\n- Garantia vitalícia para uso. PRODUTOS FEITOS SOB ENCOMENDA, APÓS ENCOMENDAR, MENSAGEM PARA O ADMIN. FEITO RAPIDAMENTE DENTRO DO HORÁRIO COMERCIAL\n\n- Por favor, não altere as informações da conta para evitar ser removido da equipe\n\n- Caso a conta apresente algum erro por problemas da equipe, acesse o link abaixo, insira o e-mail cadastrado, em seguida selecione \"Pressione aqui para mudar para organização ativa\" -> aguarde ser adicionado à nova Equipe -> saia e faça login novamente para usar normalmente:  \nhttps://reseller.ado-besoft.com/status"
+    },
+    "6acb61f5fac01298228cf66b": {
+      "name": "Adobe Creative Cloud (todos os aplicativos) — vaga por 1 mês, garantia total",
+      "description": "ADICIONAR EQUIPE OFICIAL PODE SER ESTENDIDA.  \n!!! VIP: OS CLIENTES PODEM INICIAR A GARANTIA POR SI MESMO!!!\n\nCompre e envie um e-mail e aguarde até que o Admin adicione você à equipe\n\nAdobe Aplicativos completos Recursos completos Usos de crédito IA\n\n- Caso a conta apresente erros por problemas da equipe, acesse o link abaixo, insira o e-mail cadastrado e selecione \"Aperte aqui para mudar para organização ativa\" -> aguarde ser adicionado à nova Equipe -> saia e faça login novamente para usar normalmente:  \nhttps://reseller.ado-besoft.com/status"
+    },
+    "6aac4b895271203cb11d924b": {
+      "name": "Código Adobe Express Premium — 12 meses, sem garantia",
+      "description": "Você receberá um link para ativar o Adobe Express Premium por 12 meses.\n\nRequer uma conta Adobe (nova ou antiga).\n\nNÃO É NECESSÁRIO CARTÃO DE PAGAMENTO.\n\nSe você encontrar problemas ao ativar o link, tente usar uma VPN da Índia\nou crie uma nova conta Adobe com a região definida para a Índia para ativar!"
+    },
+    "6aa7acd30e9c83494e683862": {
+      "name": "Código n8n Starter — 1 ano",
+      "description": "Descrição:\nDuração: 12 Meses\nCódigo de desconto oficial\n🚫 Sem garantia após ativação do código\nFaça login na sua conta\n\n⚠️ Observe que o código deve ser resgatado dentro de 7 dias a partir da data da compra. Os códigos não utilizados dentro deste período podem expirar e não serem mais elegíveis para suporte ou substituição.\n\n⚠️⚠️ Como este é um código de resgate oficial, pode haver momentos em que ficaremos sem estoque, então envie um e-mail para o bot para que possamos enviar o código de resgate diretamente para o seu e-mail para maior comodidade! Obrigado⚠️⚠️"
+    },
+    "6aa7acea0e9c83494e683c48": {
+      "name": "Código Wispr Flow Pro — 1 ano",
+      "description": "⚡️ Wispr Flow Pro 12 meses\n⚡️ Duração: 12 Meses\n⚡️ Código de desconto oficial\n🚫 Sem garantia após ativação do código\n⚡️ Na sua conta\n\n⚠️ Observe que o código deve ser resgatado dentro de 7 dias a partir da data da compra. Os códigos não utilizados dentro deste período podem expirar e não serem mais elegíveis para suporte ou troca.\n⚠️⚠️Como este é um código de resgate oficial, pode haver momentos em que ficaremos sem estoque, então envie um e-mail para o bot para que possamos enviar o código de resgate diretamente para o seu e-mail imediatamente! Obrigado⚠️⚠️\n\n💡 Guia rápido\n🚀 Como resgatar sua oferta Wispr Flow\n\n1. Baixe o aplicativo de desktop Wispr Flow (Mac/Windows):\nwisprflow.IA/downloads\n\n2. Registre uma conta gratuita e conclua a configuração no seu dispositivo.\n\n3. Atualize para o plano Pro usando pagamento anual:\nConfigurações → Planos e Pagamento → Atualizar para Pro\n\n4. Na página de pagamento, clique em “Adicionar código promocional” e insira seu código de desconto.\n\nEntrega manual após confirmação de pagamento."
+    },
+    "6ab4d12a71af64b485efed87": {
+      "name": "Ativação oficial do VieON VIP — 30 dias, garantia total",
+      "description": "Os clientes enviam [tk:mk] ao bot para atualizar o pacote\n30 dias de garantia"
+    },
+    "6ab299532d45b71acbee6cc3": {
+      "name": "Kaspersky Premium + VPN — 1 ano, garantia de 300 dias",
+      "description": "Formato da chave: XXXXX-XXXX-XXXX-XXXX\nGarantia: 300 dias\nPara clientes globais: Você precisa se conectar via VPN com um IP/Proxy do Vietnã para a primeira ativação.\nApós a ativação bem-sucedida, os usos subsequentes não requerem VPN.\nPeríodo de uso:⏳ 01 ano (a validade pode variar em algumas semanas dependendo do tempo de ativação do provedor).\nNúmero de dispositivos:💻 01 Windows PC\n\nkaspersky.com.vn/downloads/premium\nNota: Ao baixar Kaspersky Premium, a VPN será incluída na versão Premium."
+    },
+    "6ab4d09571af64b485efd56b": {
+      "name": "Código Higgsfield Pro — 12 meses",
+      "description": "Por favor leia a descrição antes de comprar.\n\n⚡ 600 pontos por mês\n⚡ Duração: 12 meses\n⚡ Código de desconto oficial\n⚡ Sem garantia após ativação\n⚡ Aplica-se à sua conta\n\n⚠️ Observe que o código deve ser usado dentro de 7 dias a partir da data da compra. Os códigos não utilizados dentro deste período podem expirar e não serem mais elegíveis para suporte ou substituição.\n\n⚠️⚠️Como este é um código de resgate oficial, pode haver momentos em que ficaremos sem estoque, então envie um e-mail para o bot para que possamos enviar o código de resgate diretamente para seu e-mail para maior comodidade! Obrigado⚠️⚠️"
+    },
+    "6abf71bdf922f3c31f835362": {
+      "name": "Quizlet Plus Ilimitado — 1 mês, garantia total",
+      "description": "🚀 QUIZLET MAIS ILIMITADO – 1 MÊS | garantia total\n\n📌 BENEFÍCIOS\n\n• Quizlet Conta Plus para professores\n• Aprendizagem sem anúncios\n• Criação e uso ilimitado de flashcards\n• Crie aulas, grupos de estudo e atribua tarefas aos alunos\n• Acompanhe o progresso de aprendizagem dos alunos\n• Criar atividades de revisão, testes e lições\n• Use os modos Aprender, Teste e flashcard avançado\n• Acesse muitos recursos de suporte de ensino\n• Adequado para professores, tutores e instrutores on-line\n\n🛡️ GARANTIA\n\n• Garantia em tempo integral por 1 mês\n• Suporte se a conta perder privilégios Plus ou encontrar erros de uso\n• Nenhuma garantia se a conta for compartilhada ou usada incorretamente\n• Caso ocorram erros, envie fotos/vídeos para a loja verificar\n\n⚠️ NOTAS\n\n• Não compartilhe a conta com outras pessoas\n• Verifique a conta imediatamente após recebê-la\n• Leia a descrição com atenção antes de comprar"
+    },
+    "6abf71fff922f3c31f8360e4": {
+      "name": "Código Perplexity Pro — 1 ano",
+      "description": "Este é o código de ativação (CDK) para o pacote 12 Perplexity PRO mês. Você mesmo ativa este código em sua conta.  \nO código só é aplicável para novas contas ou contas que nunca usaram o pacote PRO antes.  \nEste produto não vem com garantia (sem garantia se o código travar, sem garantia para o processo de ativação, sem garantia após a compra). Observe claramente: depois de receber o código, você é totalmente responsável por seu uso.  \n\nEste código NÃO inclui créditos 4,000.  \n\nNOVO MÉTODO – SIGA AS INSTRUÇÕES!!  \n\n⚠️⚠️Por se tratar de um código de resgate oficial, em determinados momentos podemos ficar sem estoque, então envie um e-mail para o bot para que possamos enviar o código de resgate diretamente para seu e-mail para sua comodidade! Obrigado⚠️⚠️"
+    },
+    "6ac0c42906baed899f6735d5": {
+      "name": "Manus Pro — 1 mês, garantia de 24 horas",
+      "description": "- Manus Pro\n- 5000 crédito"
+    },
+    "6acd74e63639df2f93cad03f": {
+      "name": "Código Manus Pro — 1 ano",
+      "description": "Crédito por mês 4000\nDuração: 12 Meses\n🛡️ Código de cupom oficial\n🛡️ Sem garantia após ativação do cupom\n👨‍👩‍👧‍👦 Na sua conta\nObserve que o código deve ser resgatado dentro de 7 dias após a compra. Os códigos que não forem usados ​​dentro deste período podem expirar e não serem mais elegíveis para suporte ou substituição."
+    },
+    "6ac6424c1e8c2007fd4c6b9f": {
+      "name": "Código Replit Core — 1 ano",
+      "description": "⚡️ Duração: 12 Meses\n⚡️ Código de desconto oficial\n🚫 Sem garantia após a ativação do código\n⚡️ Na sua conta\n\n⚠️ Observe que o código deve ser resgatado dentro de 7 dias a partir da data de compra. Os códigos não utilizados dentro deste período podem expirar e não se qualificarem mais para suporte ou substituição.\n\n💡 Guia rápido\n🚀 Como ativar sua oferta Replit\n\n1. Crie sua conta no Replit.\n\n2. Atualize sua conta de duas maneiras:\n• Processo de integração inicial\n• Ou o botão “Atualizar para Replit Core” no canto inferior esquerdo da página inicial\n\n3. Selecione o plano “Replit Core” com faturamento anual.\n\n4. Na página de pagamento, clique em “Adicionar código promocional” e insira seu código de desconto.\n\n⚠️⚠️ Como este é um código de resgate oficial, pode haver momentos em que ficaremos sem estoque, então envie um e-mail para o bot para que possamos enviar o resgate diretamente para seu e-mail para maior comodidade! Obrigado ⚠️⚠️"
+    },
+    "6ade35509e69455ae526ec84": {
+      "name": "Chave HMA para Android e PC — 20/30 dias, garantia total",
+      "description": "HMA Chave usada para Android e PC, este tipo é uma chave, portanto não pode ser usada para iOS."
+    },
+    "6adecb582027670b97694156": {
+      "name": "Veo 4 Ultra x20 — vaga com 750 mil créditos, 1 mês, garantia total",
+      "description": "- Tempo de levantamento: Após 30 minutos  \n- SEM MODELO LITE DE BAIXA PRIORIDADE (SEM MODELO DE GERAÇÃO DE VÍDEO SEM CRÉDITO)  \n- Reembolsos somente quando a Loja não puder garantir o pacote Ultra e não puder reabastecer para o cliente, reembolso com base no tempo restante de utilização do pacote  \n- Toda a família compartilha 750 mil créditos por mês  \n- A cada dia serão adicionados 25 mil, em horários aleatórios  \n* Certifique-se de que o e-mail pode gerar vídeos, garantirei o pacote Ultra durante o período de utilização. Se houver algum erro, a alteração do e-mail custará 50 mil adicionais. Verifique as seguintes condições 2 antes de enviar o e-mail:  \n1 - Fechar HSTT em: https://payments.google.com/gp/w/home/settings  \n2 - Verifique se há uma família atualmente em: http://g.co/yourfamily"
+    },
+    "6adecad72027670b97691630": {
+      "name": "Veo 3 (Antigravity) Ultra x20 — vaga com 0 crédito, 3 meses, garantia total",
+      "description": "- SEM MODELO LITE DE BAIXA PRIORIDADE (SEM MODELO DE GERAÇÃO DE VÍDEO SEM COBRANÇA DE CRÉDITO)  \n- Pode usar Gemini Ultra em: https://gemini.google.com com uso 20x do pacote Pro.  \n- Após o BOT notificar que o pedido foi adicionado, acesse o link http://g.co/yourfamily através do e-mail cadastrado, verifique se há convite e clique em ingressar.  \n- 1 anos de garantia para o pacote Ultra  \n- Reembolso somente se a Loja não puder fornecer garantia do pacote Ultra ao cliente  \n- Caso o cliente queira utilizar a geração de vídeo Veo 3, escolha este pacote (recomendado)  \n- Entre no grupo com crédito; no entanto, não deve ser usado. Se usada incorretamente, a ferramenta será bloqueada por 1 mês.  \n- Não há suporte de garantia para o pacote Antigravidade que o acompanha se Google alterar a política.  \n\n- Uso excessivo de crédito:  \n   + Crédito inferior a 6k: deduza 3 meses de validade ou pague a diferença para atualizar para o pacote ULTL1.  \n   + De 6k a 25k de crédito: pague o crédito de acordo com o preço no momento da expulsão.  \n\n* Certifique-se de que o e-mail possa gerar vídeo; Eu forneço garantia para o pacote Ultra durante o uso. Se houver algum erro que exija alteração de e-mail, será aplicada uma taxa extra de 50 mil. Verifique as condições 2 abaixo antes de enviar o e-mail:  \n1 - Envie o formulário de inscrição em:  \nhttps://payments.google.com/gp/w/home/settings  \n\n2 - Verifique se existe uma família em:  \nhttp://g.co/yourfamily"
+    },
+    "6adecb182027670b97692ae6": {
+      "name": "Veo 3 (Antigravity) Ultra x20 — vaga com créditos aleatórios, 6 meses, garantia total",
+      "description": "- Tempo de atualização: IMEDIATO  \n- SEM MODELO LITE DE BAIXA PRIORIDADE (SEM MODELO DE CRIAÇÃO DE VÍDEO SEM CRÉDITO)  \n- Após o BOT informar que o pedido foi adicionado, acesse o link http://g.co/yourfamily com o e-mail cadastrado, verifique se há convite e clique em entrar  \n- Possui crédito de Fluxo Aleatório (0 -> 25k Cre). Use Fluxo // Antigravidade.  \n- Armazenamento: 30 TB compartilhado para Fotos, Drive e Gmail.  \n- Não YouTube Premium Individual (mesmo para contas delegadas)  \n- Reembolso somente se a Loja não puder fornecer garantia do pacote Ultra para o cliente  \n- Os clientes enviam e-mails para serem convidados para o Family ou usam contas delegadas.  \n* Certifique-se de que o e-mail pode criar vídeos, garantirei o pacote Ultra durante o uso; se houver algum erro e for necessária uma alteração de correio, adicione uma taxa de 50k. Verifique as duas condições abaixo antes de enviar o e-mail:  \n1 - Pague HSTT em: https://payments.google.com/gp/w/home/settings  \n\n2 - Verifique se já existe família em: http://g.co/yourfamily"
+    },
+    "6adecb2b2027670b9769320f": {
+      "name": "Veo 4 Ultra x5 — vaga com créditos aleatórios, 12 meses, garantia total",
+      "description": "- Tempo de atualização: IMEDIATO  \n- SEM MODELO LITE DE BAIXA PRIORIDADE (SEM MODELO DE CRIAÇÃO DE VÍDEO SEM CRÉDITO)  \n- Após o BOT informar que o pedido foi adicionado, acesse o link http://g.co/yourfamily usando o e-mail cadastrado, verifique se há convite, clique em entrar  \n- Há crédito de fluxo aleatório (0 -> 10k Cre)  \n- Clientes enviam e-mail para serem convidados para a Família  \n- Caso o cliente queira utilizar Antigravidade, escolha este pacote (recomendado)  \n- Observe que este pacote atualmente não possui o modelo de criação de vídeo ilimitado veo 3  \n- Reembolso somente se a Loja não puder fornecer garantia do pacote Ultra ao cliente  \n* Certifique-se de que o e-mail pode criar vídeos; oferecemos garantia para o pacote Ultra durante o uso. Se houver algum erro, a alteração do e-mail custará 50 mil adicionais. Verifique as duas condições abaixo antes de enviar o e-mail:  \n1 - Envie HSTT em:  \nhttps://payments.google.com/gp/w/home/settings  \n\n2 - Verifique se existe uma família em:  \nhttp://g.co/yourfamily"
+    }
+  },
+  "unchanged_product_ids": [
+    "6ae2682aaf04316c422373e5",
+    "6ac71f09247ad165e5fc593c",
+    "6ae3371e733eece885451242",
+    "6a4f9e24a8d17b681650ce19",
+    "6ac3ea8b8931359f49e15ed2",
+    "6ac3eac58931359f49e16a3a",
+    "6aabef625271203cb1109c96",
+    "6a2f91c988c422ef229e7865",
+    "6acc7594a4bec4e0eb2de497",
+    "6aa276776bbf581350b9a2f1",
+    "6ad192cd02296012a32a5c67",
+    "6a47257cc35868edfeb4b3a3",
+    "6ace53119be1aad20b05f20b",
+    "6accf60c73ae2c508579fe66",
+    "6ad71475d77978d3b598c39a",
+    "6ad7149bd77978d3b598d417",
+    "6a9e56194f6e4dbc77f49556",
+    "6a9e55f54f6e4dbc77f490af",
+    "6a9e563e4f6e4dbc77f49a6e",
+    "6a9e56064f6e4dbc77f49363",
+    "6a9e56494f6e4dbc77f49b8b",
+    "6a9e56294f6e4dbc77f497dc",
+    "6aac4b3b5271203cb11d8acd",
+    "6ac3e6128931359f49e0c806",
+    "6a8c43743e33293b219e7b43",
+    "6aac4b525271203cb11d8c65",
+    "6ad26c635f42a3a253f0224a",
+    "6aac4ac75271203cb11d7ee4",
+    "6ade353f9e69455ae526e689",
+    "6abf7120f922f3c31f833334",
+    "6abf7155f922f3c31f833df4",
+    "6ac2744c58fd0139bbe51277",
+    "6ac5046e90c1ad54552b4bd6",
+    "6ac8c9fefac0129822231fba",
+    "6ac903d3fac01298222df2dd",
+    "6ada662eeb49270dce334a4a",
+    "6adecb442027670b97693978",
+    "6adecaab2027670b97690ce6",
+    "6adecb362027670b97693557",
+    "6adecae82027670b976919c9",
+    "6adecb092027670b9769244c",
+    "6adecac62027670b976910fa",
+    "6ae10f7c6eef632a1c1cfd1b",
+    "6a9e51544f6e4dbc77f3f15c",
+    "6a9e51b84f6e4dbc77f3ffa9",
+    "6a9e58684f6e4dbc77f4e383",
+    "6ab4d13d71af64b485eff181",
+    "6ab4d14e71af64b485eff67b",
+    "6ab94f01266735c897823a00",
+    "6abf71e9f922f3c31f835d29",
+    "6ac8d252fac012982224d191",
+    "6acf9cf2452526529258af25",
+    "6ad86eb80c1a1b0e6643f10a"
+  ],
+  "hidden_product_ids": [],
+  "source_urls": {
+    "6a5cc41237d1d25ab6b419af": [],
+    "6ac2765b58fd0139bbe58c07": [],
+    "6a42a6857a292502082c572f": [],
+    "6a40da60a530bb6d36111f5a": [
+      "https://docs.google.com/document/d/1GPn1h7Qw0yo8HsxTNum8FRqzZNxGk_cx8DUxQ6ScN8w/edit?usp=sharing"
+    ],
+    "6ae61201ca782692262ef827": [],
+    "6ad65a621d313c71fe80820d": [
+      "https://muse.careflow-demo.online/playground"
+    ],
+    "6ad65a851d313c71fe808a94": [
+      "https://muse.careflow-demo.online/playground"
+    ],
+    "6ad65aa71d313c71fe80912f": [
+      "https://muse.careflow-demo.online/playground"
+    ],
+    "6acfb04a45252652925dc269": [
+      "https://gpt.teamsoclo.site/v1",
+      "https://docs.teamsoclo.site/",
+      "https://tinyurl.com/teamsoclovid",
+      "https://gpt.teamsoclo.site/check",
+      "https://redeem.teamsoclo.site/"
+    ],
+    "6acfb08d45252652925dd0c7": [
+      "https://gpt.teamsoclo.site/v1",
+      "https://docs.teamsoclo.site/",
+      "https://tinyurl.com/teamsoclovid",
+      "https://gpt.teamsoclo.site/check",
+      "https://redeem.teamsoclo.site/",
+      "https://t.me/teamsoclo"
+    ],
+    "6acfb0bd45252652925dda23": [
+      "https://gpt.teamsoclo.site/v1",
+      "https://docs.teamsoclo.site/",
+      "https://tinyurl.com/teamsoclovid",
+      "https://gpt.teamsoclo.site/check",
+      "https://redeem.teamsoclo.site/",
+      "https://t.me/teamsoclo"
+    ],
+    "6acfb11345252652925dec30": [
+      "https://gpt.teamsoclo.site/v1",
+      "https://docs.teamsoclo.site/",
+      "https://tinyurl.com/teamsoclovid",
+      "https://gpt.teamsoclo.site/check",
+      "https://redeem.teamsoclo.site/",
+      "https://t.me/teamsoclo"
+    ],
+    "6acfb16445252652925dfb28": [
+      "https://gpt.teamsoclo.site/v1",
+      "https://docs.teamsoclo.site/",
+      "https://tinyurl.com/teamsoclovid",
+      "https://gpt.teamsoclo.site/check",
+      "https://redeem.teamsoclo.site/",
+      "https://t.me/teamsoclo"
+    ],
+    "6acfb19c45252652925e08d3": [
+      "https://gpt.teamsoclo.site/v1",
+      "https://docs.teamsoclo.site/",
+      "https://tinyurl.com/teamsoclovid",
+      "https://gpt.teamsoclo.site/check",
+      "https://redeem.teamsoclo.site/",
+      "https://t.me/teamsoclo"
+    ],
+    "6acfb1e945252652925e1eb7": [
+      "https://gpt.teamsoclo.site/v1",
+      "https://docs.teamsoclo.site/",
+      "https://tinyurl.com/teamsoclovid",
+      "https://gpt.teamsoclo.site/check",
+      "https://redeem.teamsoclo.site/",
+      "https://t.me/teamsoclo"
+    ],
+    "6ae38ee2ed8e0e40e4e20f6a": [
+      "https://redeem.teamsoclo.site/",
+      "https://docs.teamsoclo.site/",
+      "https://tinyurl.com/teamsoclovid",
+      "https://t.me/nimopremium",
+      "https://gpt.teamsoclo.site/v1",
+      "https://docs.teamsoclo.site/",
+      "https://tinyurl.com/teamsoclovid",
+      "https://gpt.teamsoclo.site/check"
+    ],
+    "6acbdfc6fac0129822a68684": [
+      "https://redeem.teamsoclo.site/",
+      "https://docs.teamsoclo.site/",
+      "https://tinyurl.com/teamsoclovid",
+      "https://t.me/nimopremium",
+      "https://gpt.teamsoclo.site/v1",
+      "https://docs.teamsoclo.site/",
+      "https://tinyurl.com/teamsoclovid",
+      "https://gpt.teamsoclo.site/check"
+    ],
+    "6acbe02ffac0129822a692a2": [
+      "https://redeem.teamsoclo.site/",
+      "https://docs.teamsoclo.site/",
+      "https://tinyurl.com/teamsoclovid",
+      "https://t.me/nimopremium",
+      "https://gpt.teamsoclo.site/v1",
+      "https://docs.teamsoclo.site/",
+      "https://tinyurl.com/teamsoclovid",
+      "https://gpt.teamsoclo.site/check"
+    ],
+    "6acbe006fac0129822a68ea4": [
+      "https://redeem.teamsoclo.site/",
+      "https://docs.teamsoclo.site/",
+      "https://tinyurl.com/teamsoclovid",
+      "https://t.me/nimopremium",
+      "https://gpt.teamsoclo.site/v1",
+      "https://docs.teamsoclo.site/",
+      "https://tinyurl.com/teamsoclovid",
+      "https://gpt.teamsoclo.site/check"
+    ],
+    "6acc6aca9112e477c9ad86eb": [
+      "https://redeem.teamsoclo.site/",
+      "https://docs.teamsoclo.site/",
+      "https://tinyurl.com/teamsoclovid",
+      "https://t.me/nimopremium",
+      "https://gpt.teamsoclo.site/v1",
+      "https://docs.teamsoclo.site/",
+      "https://tinyurl.com/teamsoclovid",
+      "https://gpt.teamsoclo.site/check"
+    ],
+    "6acbe092fac0129822a6a037": [
+      "https://redeem.teamsoclo.site/",
+      "https://docs.teamsoclo.site/",
+      "https://tinyurl.com/teamsoclovid",
+      "https://t.me/nimopremium",
+      "https://gpt.teamsoclo.site/v1",
+      "https://docs.teamsoclo.site/",
+      "https://tinyurl.com/teamsoclovid",
+      "https://gpt.teamsoclo.site/check"
+    ],
+    "6acbe0adfac0129822a6a3bf": [
+      "https://redeem.teamsoclo.site/",
+      "https://docs.teamsoclo.site/",
+      "https://tinyurl.com/teamsoclovid",
+      "https://t.me/nimopremium",
+      "https://gpt.teamsoclo.site/v1",
+      "https://docs.teamsoclo.site/",
+      "https://tinyurl.com/teamsoclovid",
+      "https://gpt.teamsoclo.site/check"
+    ],
+    "6abfdf23f922f3c31f968cff": [],
+    "6ab90c58266735c89777cc46": [],
+    "6ab348b25bf626c6e95e7105": [
+      "https://www.youtube.com/redeem"
+    ],
+    "6ac28e5458fd0139bbea8931": [
+      "https://gpt.teamsoclo.site/v1",
+      "https://docs.teamsoclo.site/",
+      "https://tinyurl.com/teamsoclovid",
+      "https://gpt.teamsoclo.site/check",
+      "https://redeem.teamsoclo.site/"
+    ],
+    "6ac28e6858fd0139bbea8c18": [
+      "https://gpt.teamsoclo.site/v1",
+      "https://docs.teamsoclo.site/",
+      "https://tinyurl.com/teamsoclovid",
+      "https://gpt.teamsoclo.site/check",
+      "https://redeem.teamsoclo.site/"
+    ],
+    "6ac28edb58fd0139bbea9829": [
+      "https://gpt.teamsoclo.site/v1",
+      "https://docs.teamsoclo.site/",
+      "https://tinyurl.com/teamsoclovid",
+      "https://gpt.teamsoclo.site/check",
+      "https://redeem.teamsoclo.site/"
+    ],
+    "6ac28f0158fd0139bbea9c4f": [
+      "https://gpt.teamsoclo.site/v1",
+      "https://docs.teamsoclo.site/",
+      "https://tinyurl.com/teamsoclovid",
+      "https://gpt.teamsoclo.site/check",
+      "https://redeem.teamsoclo.site/"
+    ],
+    "6acfb38245252652925e6c87": [
+      "https://gpt.teamsoclo.site/",
+      "https://docs.teamsoclo.site/",
+      "https://tinyurl.com/teamsoclovid",
+      "https://tinyurl.com/teamsoclovidclaudesetup",
+      "https://gpt.teamsoclo.site/check",
+      "https://redeem.teamsoclo.site/"
+    ],
+    "6acbe5b8fac0129822a737cd": [
+      "https://gpt.teamsoclo.site/",
+      "https://docs.teamsoclo.site/",
+      "https://tinyurl.com/teamsoclovid",
+      "https://tinyurl.com/teamsoclovidclaudesetup",
+      "https://gpt.teamsoclo.site/check",
+      "https://redeem.teamsoclo.site/",
+      "https://t.me/nimopremium"
+    ],
+    "6acbe5d0fac0129822a73a7d": [
+      "https://gpt.teamsoclo.site/",
+      "https://docs.teamsoclo.site/",
+      "https://tinyurl.com/teamsoclovid",
+      "https://tinyurl.com/teamsoclovidclaudesetup",
+      "https://gpt.teamsoclo.site/check",
+      "https://redeem.teamsoclo.site/",
+      "https://t.me/nimopremium"
+    ],
+    "6acbe70afac0129822a760f8": [
+      "https://gpt.teamsoclo.site/",
+      "https://docs.teamsoclo.site/",
+      "https://tinyurl.com/teamsoclovid",
+      "https://tinyurl.com/teamsoclovidclaudesetup",
+      "https://gpt.teamsoclo.site/check",
+      "https://redeem.teamsoclo.site/",
+      "https://t.me/nimopremium"
+    ],
+    "6acf1f22672d61b9bd71d77c": [
+      "https://gpt.teamsoclo.site/",
+      "https://docs.teamsoclo.site/",
+      "https://tinyurl.com/teamsoclovid",
+      "https://tinyurl.com/teamsoclovidclaudesetup",
+      "https://gpt.teamsoclo.site/check",
+      "https://redeem.teamsoclo.site/",
+      "https://t.me/nimopremium"
+    ],
+    "6acf1fd4672d61b9bd71fb2f": [
+      "https://gpt.teamsoclo.site/",
+      "https://docs.teamsoclo.site/",
+      "https://tinyurl.com/teamsoclovid",
+      "https://tinyurl.com/teamsoclovidclaudesetup",
+      "https://gpt.teamsoclo.site/check",
+      "https://redeem.teamsoclo.site/",
+      "https://t.me/nimopremium"
+    ],
+    "6acbe8bcfac0129822a794bd": [
+      "https://gpt.teamsoclo.site/",
+      "https://docs.teamsoclo.site/",
+      "https://tinyurl.com/teamsoclovid",
+      "https://tinyurl.com/teamsoclovidclaudesetup",
+      "https://gpt.teamsoclo.site/check",
+      "https://redeem.teamsoclo.site/",
+      "https://t.me/nimopremium"
+    ],
+    "6acbe8fafac0129822a79e44": [
+      "https://gpt.teamsoclo.site/",
+      "https://docs.teamsoclo.site/",
+      "https://tinyurl.com/teamsoclovid",
+      "https://tinyurl.com/teamsoclovidclaudesetup",
+      "https://gpt.teamsoclo.site/check",
+      "https://redeem.teamsoclo.site/",
+      "https://t.me/nimopremium"
+    ],
+    "6ab386770944def028abe0f5": [],
+    "6ab386790944def028abe14d": [],
+    "6ab3867d0944def028abe1a2": [],
+    "6ab3866f0944def028abe00e": [],
+    "6ab386750944def028abe088": [],
+    "6a79f0038bd496b9f54f9178": [],
+    "6a755120552f7596443e8b1a": [],
+    "6ab16b6df6d40479fde44d34": [],
+    "6aac46695271203cb11cfe0c": [],
+    "6ad2740a5f42a3a253f1377b": [],
+    "6a8ddb7ba806552096576c88": [],
+    "6aac4b645271203cb11d8df6": [],
+    "6ac3e5948931359f49e0b788": [],
+    "6ac3e5f48931359f49e0c49a": [],
+    "6aba68dc31a482e3ae2917de": [],
+    "6acfc1dd1062939df5132ce8": [],
+    "6acfc1f11062939df5133120": [],
+    "6abf726ff922f3c31f837251": [],
+    "6ad7dfc5cf74fcbdf587e05c": [],
+    "6a9e584a4f6e4dbc77f4defb": [],
+    "6acb61eafac01298228cf433": [
+      "https://reseller.ado-besoft.com/status"
+    ],
+    "6acb61f5fac01298228cf66b": [
+      "https://reseller.ado-besoft.com/status"
+    ],
+    "6aac4b895271203cb11d924b": [],
+    "6aa7acd30e9c83494e683862": [],
+    "6aa7acea0e9c83494e683c48": [],
+    "6ab4d12a71af64b485efed87": [],
+    "6ab299532d45b71acbee6cc3": [],
+    "6ab4d09571af64b485efd56b": [],
+    "6abf71bdf922f3c31f835362": [],
+    "6abf71fff922f3c31f8360e4": [],
+    "6ac0c42906baed899f6735d5": [],
+    "6acd74e63639df2f93cad03f": [],
+    "6ac6424c1e8c2007fd4c6b9f": [],
+    "6ade35509e69455ae526ec84": [],
+    "6adecb582027670b97694156": [
+      "https://payments.google.com/gp/w/home/settings",
+      "http://g.co/yourfamily"
+    ],
+    "6adecad72027670b97691630": [
+      "https://gemini.google.com",
+      "http://g.co/yourfamily",
+      "https://payments.google.com/gp/w/home/settings",
+      "http://g.co/yourfamily"
+    ],
+    "6adecb182027670b97692ae6": [
+      "http://g.co/yourfamily",
+      "https://payments.google.com/gp/w/home/settings",
+      "http://g.co/yourfamily"
+    ],
+    "6adecb2b2027670b9769320f": [
+      "http://g.co/yourfamily",
+      "https://payments.google.com/gp/w/home/settings",
+      "http://g.co/yourfamily"
+    ]
+  }
+}
