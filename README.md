@@ -17,7 +17,7 @@ Passos:
 
 1. Na Vercel, importe `EduardoKainan/vendasassinaturas` como projeto novo, mantendo a raiz do projeto no repositório (`/`).
 2. Adicione as três variáveis obrigatórias acima no ambiente Production antes de concluir o deploy. Mantenha `DEMO_CHECKOUT_ENABLED` ausente/`false` até querer testar pedidos demo. Use valores separados para Preview se for habilitar previews.
-3. Faça o deploy. A dependência FastAPI em `requirements.txt` permite à Vercel detectar a aplicação; `app.py` exporta a variável ASGI `app`, e `.python-version` seleciona Python 3.12. A configuração `vercel.json` fica sem mapeamentos manuais de funções.
+3. Faça o deploy. `vercel.json` fixa o preset FastAPI; `app.py` exporta a variável ASGI `app`, e `.python-version` seleciona Python 3.12. Não há mapeamentos manuais de funções.
 4. Valide `https://SEU-DOMINIO/api/health` (`database_configured` e `admin_auth_configured` devem ser `true`), abra a loja e teste `/admin` com as credenciais configuradas. `database_configured` só confirma que a variável está definida; para confirmar a conexão real, faça um pedido demo e veja se aparece no painel.
 
 O painel usa HTTP Basic, não um sistema de contas/recuperação de senha; use senha longa e mantenha o HTTPS da Vercel. `.env.example` contém somente campos vazios como referência. Não use credenciais reais nele.
