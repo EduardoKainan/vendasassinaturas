@@ -9,6 +9,7 @@ from fastapi import Depends, FastAPI, HTTPException, Request
 from fastapi.responses import FileResponse, JSONResponse
 from fastapi.security import HTTPBasic, HTTPBasicCredentials
 
+from canboso_catalog import CanbosoCatalogError, CanbosoCatalogProvider
 from postgres_store import PostgresOrderStore
 from store_app import MAX_REQUEST_BYTES, dashboard_summary, load_catalog
 
@@ -22,6 +23,8 @@ def create_app(order_store=None, settings: dict[str, str] | None = None) -> Fast
     config = dict(os.environ) if settings is None else dict(settings)
     database_url = config.get("DATABASE_URL", "").strip()
     demo_checkout_enabled = config.get("DEMO_CHECKOUT_ENABLED", "").strip().lower() == "true"
+    supplier_key = config.get("CANBOSO_BUYER_KEY", "").strip()
+    catalog_provider = CanbosoCatalogProvider(supplier_key) if supplier_key else None
     store = order_store if order_store is not None else (PostgresOrderStore(database_url) if database_url else None)
     app = FastAPI(title="Nova Assinaturas", docs_url=None, redoc_url=None, openapi_url=None)
     app.state.order_store = store
@@ -30,7 +33,7 @@ def create_app(order_store=None, settings: dict[str, str] | None = None) -> Fast
     async def protect_private_response_caching(request: Request, call_next):
         response = await call_next(request)
         path = request.url.path
-        if path == "/admin" or path.startswith("/api/admin/"):
+        if path == "/admin" or path.startswith("/api/admin/") or path == "/api/products":
             response.headers["Cache-Control"] = "no-store"
         response.headers.setdefault("X-Content-Type-Options", "nosniff")
         if path in {"/", "/admin"}:
@@ -97,12 +100,23 @@ def create_app(order_store=None, settings: dict[str, str] | None = None) -> Fast
                 config.get("ADMIN_USER") and len(config.get("ADMIN_PASSWORD", "")) >= MIN_ADMIN_PASSWORD_LENGTH
             ),
             "supplier_connected": False,
+            "supplier_catalog_configured": catalog_provider is not None,
             "payments_enabled": False,
         }
 
     @app.get("/api/products")
     def products():
-        return load_catalog()
+        if catalog_provider is None:
+            return load_catalog()
+        try:
+            return catalog_provider.list_products()
+        except CanbosoCatalogError as exc:
+            headers = {"Retry-After": str(exc.retry_after)} if exc.retry_after else None
+            return JSONResponse(
+                {"error": str(exc)},
+                status_code=exc.status_code,
+                headers=headers,
+            )
 
     @app.get("/api/admin/orders")
     def admin_orders(_: str = Depends(require_admin)):

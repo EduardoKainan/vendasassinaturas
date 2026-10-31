@@ -10,15 +10,16 @@ O repositório está preparado para o runtime Python da Vercel com FastAPI. Ante
 - `ADMIN_USER` — usuário para abrir `/admin`.
 - `ADMIN_PASSWORD` — senha forte e aleatória com pelo menos 16 caracteres. O painel e as rotas administrativas usam autenticação HTTP Basic; o navegador pedirá usuário e senha.
 - `DEMO_CHECKOUT_ENABLED` — opcional; deixe ausente ou `false` por padrão. Use `true` somente para testar pedidos demo. Isso não ativa cobrança nem entrega real.
+- `CANBOSO_BUYER_KEY` — opcional; chave buyer válida emitida pelo bot da Canboso. Quando presente, o catálogo público consulta produtos e disponibilidade pela API. A consulta é somente leitura; não compra produtos nem debita saldo.
 
-Defina as variáveis pelo painel seguro da Vercel, nunca no Git nem no chat. Sem `DATABASE_URL`, catálogo e loja abrem, mas criar/listar pedidos retorna indisponível. Sem `DEMO_CHECKOUT_ENABLED=true`, o POST de pedidos demo permanece fechado mesmo que o banco esteja configurado. Sem credenciais de admin válidas, `/admin` fica bloqueado. `DATABASE_URL` não é necessário para construir o deploy, mas é necessário para pedidos persistentes.
+Defina as variáveis pelo painel seguro da Vercel, nunca no Git nem no chat. Sem `DATABASE_URL`, catálogo e loja abrem, mas criar/listar pedidos retorna indisponível. Sem `DEMO_CHECKOUT_ENABLED=true`, o POST de pedidos demo permanece fechado mesmo que o banco esteja configurado. Sem credenciais de admin válidas, `/admin` fica bloqueado. Sem `CANBOSO_BUYER_KEY`, a loja usa o catálogo fictício. `DATABASE_URL` não é necessário para construir o deploy, mas é necessário para pedidos persistentes.
 
 Passos:
 
 1. Na Vercel, importe `EduardoKainan/vendasassinaturas` como projeto novo, mantendo a raiz do projeto no repositório (`/`).
 2. Adicione as três variáveis obrigatórias acima no ambiente Production antes de concluir o deploy. Mantenha `DEMO_CHECKOUT_ENABLED` ausente/`false` até querer testar pedidos demo. Use valores separados para Preview se for habilitar previews.
 3. Faça o deploy. `vercel.json` fixa o preset FastAPI; `app.py` exporta a variável ASGI `app`, e `.python-version` seleciona Python 3.12. Não há mapeamentos manuais de funções.
-4. Valide `https://SEU-DOMINIO/api/health` (`database_configured` e `admin_auth_configured` devem ser `true`), abra a loja e teste `/admin` com as credenciais configuradas. `database_configured` só confirma que a variável está definida; para confirmar a conexão real, faça um pedido demo e veja se aparece no painel.
+4. Valide `https://SEU-DOMINIO/api/health` (`database_configured` e `admin_auth_configured` devem ser `true`; `supplier_catalog_configured` informa apenas se a variável da Canboso está configurada), abra a loja e teste `/admin` com as credenciais configuradas. `database_configured` só confirma que a variável está definida; para confirmar a conexão real, faça um pedido demo e veja se aparece no painel.
 
 O painel usa HTTP Basic, não um sistema de contas/recuperação de senha; use senha longa e mantenha o HTTPS da Vercel. `.env.example` contém somente campos vazios como referência. Não use credenciais reais nele.
 
@@ -35,40 +36,24 @@ Acesse `http://127.0.0.1:8767/` (loja) e `http://127.0.0.1:8767/admin` (painel l
 ## Endpoints do deploy
 
 - `GET /` — loja.
-- `GET /api/products` — catálogo fictício.
+- `GET /api/products` — catálogo Canboso em modo somente leitura quando `CANBOSO_BUYER_KEY` estiver configurada; caso contrário, catálogo fictício.
 - `POST /api/orders` — registra pedido demo no PostgreSQL; exige `DATABASE_URL`.
 - `GET /admin`, `GET /api/admin/orders`, `GET /api/admin/dashboard` — protegidos por HTTP Basic no deploy.
 - `GET /api/health` — informa configuração presente, sem revelar valores secretos.
 
 Pedidos continuam marcados como `demo_pending` e `fulfilled: false`. A persistência PostgreSQL é para manter pedidos de teste entre execuções serverless, não habilita venda real.
 
-## Integração do fornecedor
+## Catálogo Canboso (somente leitura)
 
-A interface de backend define `CatalogProvider.list_products()` e usa `DemoCatalogProvider` enquanto a API real não está documentada. A integração deve substituir esse adaptador e normalizar a resposta para o contrato-alvo abaixo. **Esse formato é ilustrativo: a versão atual aceita somente o catálogo demo e ainda não chama o fornecedor.**
+Na aplicação FastAPI da Vercel, `GET /api/products` consulta `GET https://canboso.com/api/v2/telegram-buyer/products` usando `CANBOSO_BUYER_KEY` no backend. A chave nunca é enviada ao navegador nem incluída na resposta. O endpoint público da loja retorna apenas os campos do catálogo normalizados; preços mantêm a moeda informada pelo fornecedor, sem conversão para BRL.
 
-```json
-{
-  "mode": "supplier",
-  "is_demo": false,
-  "currency": "BRL",
-  "products": [
-    {
-      "id": "supplier-id",
-      "name": "Nome retornado pelo fornecedor",
-      "category": "Categoria",
-      "duration_days": 30,
-      "description": "Descrição",
-      "price_cents": 2990,
-      "stock": 12,
-      "active": true,
-      "featured": false,
-      "badge": "30 dias"
-    }
-  ]
-}
-```
+A resposta pública inclui `availability.available` como estoque. Se a Canboso devolver `null`, a loja mostra “Estoque não informado” em vez de inventar zero. Há cache em memória de 20 segundos por instância para reduzir chamadas; a Vercel pode iniciar várias instâncias, então o cache não é global nem garante consistência entre elas. Respostas 429 passam o `Retry-After` ao cliente, sem tentativas automáticas em loop.
 
-Para conectar de verdade, ainda preciso da documentação sem segredo: URL base, autenticação exigida, endpoints de produtos/estoque, paginação, limites, exemplos de sucesso/erro e regra para reservar/entregar. A chave deve entrar em variável de ambiente no backend — nunca em HTML, JavaScript ou chat.
+Quando a chave está configurada, a vitrine mostra os produtos Canboso, esconde carrinho e checkout demo e informa que o catálogo é somente leitura. Nenhuma compra, reserva, cobrança ou entrega é executada. Sem chave, a vitrine permanece no catálogo fictício. A tela administrativa de pedidos continua sendo apenas demo.
+
+Configure a chave no painel da Vercel: **Project → Settings → Environment Variables**. Nome: `CANBOSO_BUYER_KEY`; cole o valor no campo *Value*, marque *Production* (e *Preview* se for usar previews), salve e faça *Redeploy*. Não coloque a chave no GitHub, em `.env.example`, no código do frontend nem no chat.
+
+> A documentação descreve uma Buyer API com chave emitida por um bot Telegram. A leitura real só pode ser validada depois que uma chave válida for adicionada como variável secreta e o deployment atualizado. A API de compra não é chamada por esta integração.
 
 ## Pagamento e produção
 

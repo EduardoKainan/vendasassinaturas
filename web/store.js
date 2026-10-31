@@ -28,25 +28,42 @@ function sortedProducts() {
     `${product.name} ${product.category} ${product.description}`.toLocaleLowerCase("pt-BR").includes(query),
   );
   const sort = $("#sortProducts").value;
-  if (sort === "price-asc") products.sort((a, b) => a.price_cents - b.price_cents);
-  if (sort === "duration-desc") products.sort((a, b) => b.duration_days - a.duration_days);
-  if (sort === "featured") products.sort((a, b) => Number(b.featured) - Number(a.featured));
+  if (sort === "price-asc") {
+    if (state.mode === "supplier") products.sort((a, b) => a.price_currency.localeCompare(b.price_currency) || a.price_amount - b.price_amount);
+    else products.sort((a, b) => a.price_cents - b.price_cents);
+  }
+  if (sort === "duration-desc" && state.mode === "demo") products.sort((a, b) => b.duration_days - a.duration_days);
+  if (sort === "featured" && state.mode === "demo") products.sort((a, b) => Number(b.featured) - Number(a.featured));
   return products;
 }
 
+function supplierMoney(amount, currency) {
+  try {
+    return new Intl.NumberFormat("pt-BR", { style: "currency", currency }).format(Number(amount));
+  } catch {
+    return `${amount} ${currency}`;
+  }
+}
+
 function productCard(product, index) {
-  const stock = Math.max(0, Number(product.stock) || 0);
+  const stock = product.stock === null || product.stock === undefined ? null : Math.max(0, Number(product.stock) || 0);
   const artClass = ["art-standard", "art-plus", "art-family", "art-pro"][index % 4];
-  const stockClass = stock === 0 ? "stock-empty" : stock <= 5 ? "stock-low" : "";
-  const stockText = stock === 0 ? "Indisponível" : `${stock} un. demo`;
+  const stockClass = stock === 0 ? "stock-empty" : stock !== null && stock <= 5 ? "stock-low" : "";
+  const stockText = state.mode === "supplier"
+    ? stock === null ? "Estoque não informado" : stock === 0 ? "Indisponível" : `${stock} disponíveis`
+    : stock === 0 ? "Indisponível" : `${stock} un. demo`;
+  const price = state.mode === "supplier" ? supplierMoney(product.price_amount, product.price_currency) : formatMoney(product.price_cents);
+  const badge = state.mode === "supplier" ? (product.badge || product.category || "Produto Canboso") : (product.badge || "Plano demo");
+  const duration = state.mode === "supplier" ? product.category : `${Number(product.duration_days) || 0} dias`;
+  const actions = state.mode === "supplier" ? "" : `<div class="product-actions"><input class="quantity-input" type="number" min="1" max="${stock}" value="1" ${stock === 0 ? "disabled" : ""} aria-label="Quantidade de ${escapeHtml(product.name)}"><button class="add-button" type="button" data-add="${escapeHtml(product.id)}" ${stock === 0 ? "disabled" : ""}>${stock === 0 ? "Sem estoque" : "Adicionar +"}</button></div>`;
   return `<article class="product-card">
-    <div class="product-art ${artClass}"><span class="product-badge">${escapeHtml(product.badge || "Plano demo")}</span><span class="product-glyph" aria-hidden="true">${escapeHtml(String(product.name).slice(0, 1).toUpperCase())}</span></div>
+    <div class="product-art ${artClass}"><span class="product-badge">${escapeHtml(badge)}</span><span class="product-glyph" aria-hidden="true">${escapeHtml(String(product.name).slice(0, 1).toUpperCase())}</span></div>
     <div class="product-content">
-      <div class="product-meta"><span>${escapeHtml(product.category || "Assinatura")}</span><span>${Number(product.duration_days) || 0} dias</span></div>
+      <div class="product-meta"><span>${escapeHtml(product.category || "Assinatura")}</span><span>${escapeHtml(duration)}</span></div>
       <h3>${escapeHtml(product.name)}</h3>
-      <p class="product-description">${escapeHtml(product.description)}</p>
-      <div class="product-price-row"><strong class="product-price">${formatMoney(product.price_cents)}<small>/ unidade demo</small></strong><span class="stock-tag ${stockClass}">${stockText}</span></div>
-      <div class="product-actions"><input class="quantity-input" type="number" min="1" max="${stock}" value="1" ${stock === 0 ? "disabled" : ""} aria-label="Quantidade de ${escapeHtml(product.name)}"><button class="add-button" type="button" data-add="${escapeHtml(product.id)}" ${stock === 0 ? "disabled" : ""}>${stock === 0 ? "Sem estoque" : "Adicionar +"}</button></div>
+      <p class="product-description">${escapeHtml(product.description || "")}</p>
+      <div class="product-price-row"><strong class="product-price">${escapeHtml(price)}<small>${state.mode === "supplier" ? "preço da API" : "/ unidade demo"}</small></strong><span class="stock-tag ${stockClass}">${escapeHtml(stockText)}</span></div>
+      ${actions}
     </div>
   </article>`;
 }
@@ -136,15 +153,50 @@ async function loadCatalog() {
   try {
     const response = await fetch("/api/products", { cache: "no-store" });
     const catalog = await response.json();
-    if (!response.ok || catalog.mode !== "demo" || catalog.is_demo !== true) throw new Error("O catálogo demo não está disponível.");
-    state.products = catalog.products.filter((product) => product.active);
+    if (!response.ok) throw new Error(catalog.error || "O catálogo não está disponível agora.");
+    const validDemo = catalog.mode === "demo" && catalog.is_demo === true;
+    const validSupplier = catalog.mode === "supplier" && catalog.is_demo === false && Array.isArray(catalog.products);
+    if (!validDemo && !validSupplier) throw new Error("Formato de catálogo inválido.");
+    state.mode = catalog.mode;
+    state.products = catalog.products.filter((product) => product.active !== false);
     $("#heroProductCount").textContent = String(state.products.length);
-    $("#heroStockCount").textContent = String(state.products.reduce((sum, product) => sum + Number(product.stock || 0), 0));
-    status.textContent = `${state.products.length} planos de demonstração · sem integração de fornecedor`;
+    const knownStocks = state.products.map((product) => product.stock).filter((stock) => Number.isFinite(Number(stock)) && stock !== null && stock !== undefined);
+    $("#heroStockCount").textContent = knownStocks.length === state.products.length
+      ? String(knownStocks.reduce((sum, stock) => sum + Number(stock), 0))
+      : "—";
     renderProducts();
+    if (validSupplier) {
+      $("#ribbonLabel").textContent = "CATÁLOGO CANBOSO · SOMENTE LEITURA";
+      $("#ribbonText").textContent = "Produtos e disponibilidade vêm da API. Pagamento e compras estão desativados.";
+      $("#heroCatalogLabel").textContent = "API CANBOSO";
+      $("#heroStockLabel").textContent = "UNIDADES INFORMADAS";
+      $("#heroDescription").textContent = "Produtos, preços e disponibilidade consultados diretamente na API Canboso. Pagamento ainda desativado.";
+      $("#heroCard").setAttribute("aria-label", "Resumo do catálogo Canboso");
+      $("#heroCardSubtext").textContent = "consulte a disponibilidade";
+      $("#trustMessage").textContent = "Consulta somente de produtos e disponibilidade. Nenhuma compra, cobrança ou reserva de estoque é feita.";
+      document.title = "Nova Assinaturas — Catálogo Canboso";
+      $("#carrinho").hidden = true;
+      $("#headerCartLink").hidden = true;
+      $("#sortProducts option[value=\"duration-desc\"]").hidden = true;
+      status.textContent = `${state.products.length} produtos recebidos da Canboso · consulta somente · sem pagamento`;
+    } else {
+      $("#ribbonLabel").textContent = "AMBIENTE DE DEMONSTRAÇÃO";
+      $("#ribbonText").textContent = "Produtos, preços e estoque são fictícios. Nenhuma cobrança ou entrega é feita.";
+      $("#heroCatalogLabel").textContent = "CATÁLOGO DEMO";
+      $("#heroStockLabel").textContent = "UNIDADES DEMO";
+      $("#heroDescription").textContent = "Compare duração, disponibilidade e preço. Este catálogo está em modo de demonstração enquanto a API do fornecedor e o pagamento não são configurados.";
+      $("#heroCard").setAttribute("aria-label", "Resumo do catálogo demo");
+      $("#heroCardSubtext").textContent = "para testar o fluxo";
+      $("#trustMessage").textContent = "Prévia funcional: você pode montar o carrinho e registrar pedidos de demonstração. Não informe dados de pagamento ou dados pessoais.";
+      document.title = "Nova Assinaturas — Loja demo";
+      status.textContent = `${state.products.length} planos de demonstração · sem integração de fornecedor`;
+    }
   } catch (error) {
-    status.textContent = error.message;
-    $("#productGrid").innerHTML = '<div class="no-results">Não foi possível carregar o catálogo local.</div>';
+    $("#ribbonLabel").textContent = "CATÁLOGO INDISPONÍVEL";
+    $("#ribbonText").textContent = "Não foi possível consultar o catálogo; nenhum produto fictício será exibido como estoque real.";
+    $("#trustMessage").textContent = "Consulta somente. Pagamento e compras continuam desativados.";
+    status.textContent = error.message || "Falha ao carregar o catálogo.";
+    $("#productGrid").innerHTML = '<div class="no-results">Não foi possível carregar o catálogo. Tente novamente mais tarde.</div>';
   }
 }
 

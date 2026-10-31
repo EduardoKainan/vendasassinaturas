@@ -42,6 +42,37 @@ class VercelAppTests(unittest.TestCase):
         self.assertFalse(health["supplier_connected"])
         self.assertFalse(health["payments_enabled"])
 
+    def test_public_products_uses_server_side_supplier_key_and_returns_read_only_catalog(self):
+        catalog = {
+            "mode": "supplier",
+            "is_demo": False,
+            "source": "Canboso Buyer API",
+            "currency": "VND",
+            "products": [{"id": "prod-1", "name": "Plan", "price_amount": 50000, "price_currency": "VND", "stock": None}],
+        }
+        with patch.dict("os.environ", {}, clear=True), patch("app.CanbosoCatalogProvider") as provider_class:
+            provider_class.return_value.list_products.return_value = catalog
+            client = TestClient(create_app(settings={"CANBOSO_BUYER_KEY": "server-only-secret"}))
+            response = client.get("/api/products")
+        self.assertEqual(response.status_code, 200)
+        self.assertEqual(response.json(), catalog)
+        self.assertEqual(response.headers["cache-control"], "no-store")
+        self.assertNotIn("server-only-secret", response.text)
+        provider_class.assert_called_once_with("server-only-secret")
+        health = client.get("/api/health").json()
+        self.assertTrue(health["supplier_catalog_configured"])
+        self.assertNotIn("server-only-secret", str(health))
+
+    def test_supplier_rate_limit_is_forwarded_without_leaking_credentials(self):
+        from canboso_catalog import CanbosoCatalogError
+        with patch.dict("os.environ", {}, clear=True), patch("app.CanbosoCatalogProvider") as provider_class:
+            provider_class.return_value.list_products.side_effect = CanbosoCatalogError(status_code=429, retry_after=12)
+            client = TestClient(create_app(settings={"CANBOSO_BUYER_KEY": "server-only-secret"}))
+            response = client.get("/api/products")
+        self.assertEqual(response.status_code, 429)
+        self.assertEqual(response.headers["retry-after"], "12")
+        self.assertNotIn("server-only-secret", response.text)
+
     def test_orders_require_persistent_database_configuration(self):
         with patch.dict("os.environ", {}, clear=True):
             client = TestClient(create_app(settings={"DEMO_CHECKOUT_ENABLED": "true"}))

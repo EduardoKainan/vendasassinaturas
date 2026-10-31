@@ -10,14 +10,14 @@
   <script src="/store.js" defer></script>
 </head>
 <body>
-  <div class="demo-ribbon"><span class="demo-dot"></span> AMBIENTE DE DEMONSTRAÇÃO <span>Produtos, preços e estoque são fictícios. Nenhuma cobrança ou entrega é feita.</span></div>
+  <div class="demo-ribbon"><span class="demo-dot"></span> <span id="ribbonLabel">AMBIENTE DE DEMONSTRAÇÃO</span> <span id="ribbonText">Produtos, preços e estoque são fictícios. Nenhuma cobrança ou entrega é feita.</span></div>
   <header class="site-header wrap">
     <a class="brand" href="/" aria-label="Nova Assinaturas, início"><span class="brand-mark">N</span><span>NOVA<span class="brand-light">ASSINATURAS</span></span></a>
     <nav class="main-nav" aria-label="Navegação principal">
       <a class="nav-active" href="#catalogo">Loja</a>
       <a href="/admin">Painel de pedidos</a>
     </nav>
-    <a class="header-cart" href="#carrinho"><span class="cart-icon">▣</span><span>Carrinho</span><span class="cart-count" id="headerCartCount">0</span></a>
+    <a class="header-cart" id="headerCartLink" href="#carrinho"><span class="cart-icon">▣</span><span>Carrinho</span><span class="cart-count" id="headerCartCount">0</span></a>
   </header>
 
   <main class="wrap store-main">
@@ -25,18 +25,18 @@
       <div class="hero-copy">
         <div class="eyebrow"><span class="eyebrow-line"></span> ACESSO DIGITAL, SEM COMPLICAÇÃO</div>
         <h1>Escolha seu próximo <span>plano.</span></h1>
-        <p>Compare duração, disponibilidade e preço. Este catálogo está em modo de demonstração enquanto a API do fornecedor e o pagamento não são configurados.</p>
+        <p id="heroDescription">Compare duração, disponibilidade e preço. Este catálogo está em modo de demonstração enquanto a API do fornecedor e o pagamento não são configurados.</p>
         <a class="button button-primary hero-cta" href="#catalogo">Explorar planos <span aria-hidden="true">↓</span></a>
       </div>
-      <div class="hero-card" aria-label="Resumo do catálogo demo">
+      <div class="hero-card" id="heroCard" aria-label="Resumo do catálogo demo">
         <div class="hero-orbit orbit-one"></div><div class="hero-orbit orbit-two"></div>
-        <div class="hero-card-top"><span class="live-label"><i></i> CATÁLOGO DEMO</span><span class="hero-spark">✦</span></div>
-        <div class="hero-card-title">Planos digitais<br><strong>para testar o fluxo</strong></div>
-        <div class="hero-card-bottom"><span><b id="heroProductCount">—</b><small>PLANOS</small></span><span class="hero-divider"></span><span><b id="heroStockCount">—</b><small>UNIDADES DEMO</small></span></div>
+        <div class="hero-card-top"><span class="live-label"><i></i> <span id="heroCatalogLabel">CATÁLOGO DEMO</span></span><span class="hero-spark">✦</span></div>
+        <div class="hero-card-title">Planos digitais<br><strong id="heroCardSubtext">para testar o fluxo</strong></div>
+        <div class="hero-card-bottom"><span><b id="heroProductCount">—</b><small>PLANOS</small></span><span class="hero-divider"></span><span><b id="heroStockCount">—</b><small id="heroStockLabel">UNIDADES DEMO</small></span></div>
       </div>
     </section>
 
-    <div class="trust-strip" role="note"><span class="trust-icon">i</span><span><strong>Prévia funcional:</strong> você pode montar o carrinho e registrar pedidos de demonstração. Não informe dados de pagamento ou dados pessoais.</span><a href="/admin">Ver painel <span aria-hidden="true">↗</span></a></div>
+    <div class="trust-strip" role="note"><span class="trust-icon">i</span><span id="trustMessage"><strong>Prévia funcional:</strong> você pode montar o carrinho e registrar pedidos de demonstração. Não informe dados de pagamento ou dados pessoais.</span><a href="/admin">Ver painel <span aria-hidden="true">↗</span></a></div>
 
     <section class="catalog-section" id="catalogo">
       <div class="section-heading">
